@@ -2423,9 +2423,14 @@
     founderLink.setAttribute("aria-expanded", "false");
     founderLink.addEventListener("click", (event) => {
       event.preventDefault();
+      history.pushState(null, "", "#founders-arc");
       openFounderArc();
     });
-    closeFounderArc.addEventListener("click", dismissFounderArc);
+    closeFounderArc.addEventListener("click", () => {
+      history.pushState(null, "", window.location.pathname + window.location.search);
+      dismissFounderArc();
+    });
+    if (window.location.hash === "#founders-arc") openFounderArc();
 
     loading.hidden = false;
 
