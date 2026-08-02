@@ -44,4 +44,10 @@ for (const required of ["The Civilizational Shelf", "/api/catalog.json", "easter
   assert(index.includes(required), `Built site is missing ${required}`);
 }
 
+const founderArc = await readFile(path.join(root, "dist", "founders-arc", "index.html"), "utf8");
+for (const required of ["Anger", "Ambition", "Tenderness", "founder-arc-mirror.webp", "Return to the shelf"]) {
+  assert(founderArc.includes(required), `Founder’s Arc is missing ${required}`);
+}
+assert(!founderArc.includes("three.module.js"), "Founder’s Arc must not load the 3D shelf runtime");
+
 console.log(`Verified ${catalog.volumes.length} volumes, ${allLectures.length} transcripts, and canonical playlist links.`);

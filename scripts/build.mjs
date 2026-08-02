@@ -75,7 +75,8 @@ async function findCaption(series, episode, videoId) {
 await rm(dist, { recursive: true, force: true });
 await Promise.all([
   mkdir(transcriptApiDir, { recursive: true }),
-  mkdir(transcriptTextDir, { recursive: true })
+  mkdir(transcriptTextDir, { recursive: true }),
+  mkdir(path.join(dist, "founders-arc"), { recursive: true })
 ]);
 
 const sourceCatalog = JSON.parse(await readFile(path.join(root, "content", "catalog.source.json"), "utf8"));
@@ -131,6 +132,7 @@ const publicCatalog = {
 
 await writeFile(path.join(apiDir, "catalog.json"), `${JSON.stringify(publicCatalog, null, 2)}\n`);
 await cp(path.join(root, "index.html"), path.join(dist, "index.html"));
+await cp(path.join(root, "founders-arc", "index.html"), path.join(dist, "founders-arc", "index.html"));
 await cp(path.join(root, "assets"), path.join(dist, "assets"), { recursive: true });
 await cp(path.join(root, "_redirects"), path.join(dist, "_redirects"));
 

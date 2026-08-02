@@ -2280,7 +2280,7 @@
       <div class="editorial-index">
         <span class="editorial-index__signal" id="edition-status">Volume 01 of 10</span>
         <span id="palette-label">13 lectures · full transcripts</span>
-        <a class="founder-link" id="founder-link" href="#founders-arc">Why this shelf</a>
+        <a class="founder-link" href="/founders-arc/">Why this shelf</a>
       </div>
     </header>
 
@@ -2406,7 +2406,7 @@
       </div>
     </div>
 
-    <section class="founder-arc" id="founders-arc" aria-labelledby="founder-arc-title" aria-hidden="true" hidden>
+    <template id="legacy-founders-arc">
       <div class="founder-arc__inner">
         <button class="founder-arc__close" id="close-founder-arc" type="button" aria-label="Close founder's arc">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8"></path></svg>
@@ -2470,7 +2470,7 @@
           <p class="founder-arc__note">I verified the recent public X article list and the public Predictive History archive. The archive search did not surface the exact birthday letter from late December, so this page uses the principles you carried from it without presenting an unverified quotation.</p>
         </div>
       </div>
-    </section>
+    </template>
   </main>
 
   <script type="module">
@@ -2548,36 +2548,7 @@
     const pointerLabel = document.querySelector("#pointer-label");
     const pointerLabelIndex = document.querySelector("#pointer-label-index");
     const pointerLabelTitle = document.querySelector("#pointer-label-title");
-    const founderLink = document.querySelector("#founder-link");
-    const founderArc = document.querySelector("#founders-arc");
-    const closeFounderArc = document.querySelector("#close-founder-arc");
     const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const openFounderArc = () => {
-      founderArc.hidden = false;
-      founderArc.setAttribute("aria-hidden", "false");
-      founderLink.setAttribute("aria-expanded", "true");
-      closeFounderArc.focus();
-    };
-
-    const dismissFounderArc = () => {
-      founderArc.hidden = true;
-      founderArc.setAttribute("aria-hidden", "true");
-      founderLink.setAttribute("aria-expanded", "false");
-      founderLink.focus();
-    };
-
-    founderLink.setAttribute("aria-expanded", "false");
-    founderLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      history.pushState(null, "", "#founders-arc");
-      openFounderArc();
-    });
-    closeFounderArc.addEventListener("click", () => {
-      history.pushState(null, "", window.location.pathname + window.location.search);
-      dismissFounderArc();
-    });
-    if (window.location.hash === "#founders-arc") openFounderArc();
 
     loading.hidden = false;
 
