@@ -262,6 +262,31 @@
       line-height: 1.35;
     }
 
+    .dream {
+      width: min(1040px, calc(100% - 44px));
+      margin: 0 auto clamp(100px, 14vw, 180px);
+    }
+
+    .dream img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(203, 178, 116, 0.36);
+      filter: saturate(0.74) contrast(1.05);
+    }
+
+    .dream figcaption {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 22px;
+      max-width: 48rem;
+      margin-top: 14px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.67rem;
+      line-height: 1.6;
+    }
+
     .chapter {
       display: grid;
       grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1fr);
@@ -333,36 +358,65 @@
       text-transform: uppercase;
     }
 
-    .fragment {
-      position: relative;
-      min-height: clamp(260px, 42vw, 500px);
-      margin: 54px 0 20px;
-      overflow: hidden;
-      border: 1px solid var(--rule);
-      background-image: linear-gradient(rgba(12, 17, 28, 0.06), rgba(12, 17, 28, 0.24)), url("/assets/founder-arc-mirror.webp");
-      background-repeat: no-repeat;
-      background-size: cover;
-      filter: saturate(0.72);
+    .evidence {
+      margin: 54px 0 44px;
     }
 
-    .fragment--mirror { background-position: 38% center; }
-    .fragment--wraps { background-position: 8% center; }
-    .fragment--chairs { background-position: 86% center; }
+    .evidence img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      filter: saturate(0.88) contrast(1.02);
+    }
 
-    .fragment span {
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      left: 14px;
-      padding: 12px 14px;
-      background: rgba(7, 10, 17, 0.76);
-      color: var(--paper);
+    .evidence figcaption {
+      max-width: 31rem;
+      margin-top: 12px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.67rem;
+      letter-spacing: 0.04em;
+      line-height: 1.55;
+    }
+
+    .evidence--portrait {
+      width: min(72%, 390px);
+      margin-left: auto;
+      transform: rotate(0.7deg);
+    }
+
+    .evidence--portrait-left {
+      width: min(72%, 390px);
+      transform: rotate(-0.7deg);
+    }
+
+    .evidence--confession {
+      width: min(72%, 380px);
+      margin-left: auto;
+    }
+
+    .evidence--confession img {
+      width: 100%;
+      height: min(70vh, 720px);
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .absence {
+      display: grid;
+      place-items: end start;
+      min-height: 270px;
+      margin: 54px 0 44px;
+      padding: 18px;
+      border: 1px dashed rgba(241, 234, 223, 0.28);
+      background: rgba(255, 255, 255, 0.015);
+      color: var(--quiet);
       font-family: var(--sans);
       font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      line-height: 1.5;
+      letter-spacing: 0.13em;
+      line-height: 1.6;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
     }
 
     .formula {
@@ -485,10 +539,15 @@
 
       .formula { grid-template-columns: 1fr; }
       .formula div { min-height: auto; }
-      .fragment { min-height: 340px; }
+      .evidence--portrait,
+      .evidence--portrait-left,
+      .evidence--confession { width: calc(100% - 20px); }
+      .evidence--portrait,
+      .evidence--portrait-left { transform: none; }
       .dante-map { grid-template-columns: 1fr; margin-top: -30px; }
       .dante-map div { min-height: auto; }
       .dante-map div + div { border-top: 1px solid var(--rule); border-left: 0; }
+      .dream figcaption { grid-template-columns: 1fr; gap: 5px; }
       .scrap,
       .scrap--left { width: 100%; margin-inline: 0; transform: none; }
       .gift { transform: none; }
@@ -510,8 +569,8 @@
       <div>
         <p class="found-note">for whoever found this: take what you need. leave the rest here.<span>Queens, New York · still becoming</span></p>
         <p class="eyebrow">The founder’s arc</p>
-        <h1>What am I trying to become?</h1>
-        <p class="hero__question">What kind of teacher can I become if I stop using knowledge to avoid my life and start using it to organize my life?</p>
+        <h1>Dear stranger,</h1>
+        <p class="hero__question">I made this because I got tired of using knowledge to stand one inch outside my own life. This is the story of the three forces I found underneath: anger, ambition, and tenderness.</p>
         <nav class="spine" aria-label="The three chapters">
           <span>Anger <small>I</small></span>
           <span>Ambition <small>II</small></span>
@@ -520,10 +579,10 @@
       </div>
 
       <figure class="hero__image">
-        <img src="/assets/founder-arc-mirror.webp" width="1440" height="920" alt="At dawn in a wet city park, boxing wraps hang from a cracked mirror beside an annotated book and three empty student chairs. A classical warrior appears in one shard while an ordinary man appears in another.">
+        <img src="/assets/founder-classroom.jpg" width="1200" height="900" alt="Jai holds a phone close for a classroom selfie while students smile, wave, and sit among laptops, water bottles, and sticky notes.">
         <figcaption>
-          <span class="image-note">The mirror · the book · the body</span>
-          <span>The Iliad became personal when students said the lecture felt like a mirror. Beneath the glory, Achilles makes us face what anger protects, what pride costs, and how little time a human life contains.</span>
+          <span class="image-note">A room I was lucky to enter</span>
+          <span>Later, students said the Iliad lecture felt like a mirror. I think I had been holding it up for them without noticing it was pointed back at me.</span>
         </figcaption>
       </figure>
     </section>
@@ -536,6 +595,14 @@
       <div><b>Return to the stars</b><span>Bring something back for another person.</span></div>
     </aside>
 
+    <figure class="dream">
+      <img src="/assets/founder-arc-mirror.webp" width="1440" height="920" alt="An imagined dawn park with a cracked mirror, boxing wraps, an annotated book, empty chairs, and an Achilles-like reflection.">
+      <figcaption>
+        <span class="image-note">The imagined world</span>
+        <span>This is not documentary evidence. AI assembled the real objects of the story—the park, wraps, book, empty chairs, and Achilles in the mirror—into the world they made in my head.</span>
+      </figcaption>
+    </figure>
+
     <article class="chapter" id="anger">
       <header>
         <p class="chapter__number">Chapter I</p>
@@ -545,12 +612,11 @@
       <div class="chapter__body">
         <p>Achilles gave me a language for a force I knew but did not know how to hold. His anger is immense because his wound is immense. He can bend a war around his refusal, but he cannot make himself invulnerable to grief.</p>
         <p>The poem does not let us admire anger from a safe distance. It asks whom our anger punishes. It asks what it costs while we call it strength. Most painfully, it asks what softer truth the anger has been hired to protect.</p>
-        <blockquote class="scrap">I kept trying to explain the wound because explaining it let me stand one inch outside it.<small>note to self, after “Dear Dad”</small></blockquote>
-        <div class="fragment fragment--mirror" role="img" aria-label="A close crop of the cracked mirror in the dawn park image">
-          <span>The mirror — What softer truth was my anger protecting?</span>
-        </div>
+        <blockquote class="scrap">Dear Dad, I kept calling the wound a question because questions sounded more intelligent than grief.<small>note left after writing to you</small></blockquote>
+        <div class="absence" role="img" aria-label="An intentionally empty image frame representing an undocumented absence">No photograph here. The absence is the evidence.</div>
         <p>My writing about my father belongs here. His absence left me angry at what I did not receive and afraid of repeating it. I could turn that hurt into analysis before I let myself feel it. Writing “Dear Dad” and “What is a father?” did not resolve the wound. It made the wound visible.</p>
         <p>Under the anger was grief. Under the grief was a wish to be known, guided, and chosen. I had to decide what kind of presence I would offer when the person who should have taught me presence chose not to be there.</p>
+        <p>Homer’s outlier is not that he made Achilles impossibly strong. It is that he let the strongest man become reachable. An enemy father enters his shelter. They grieve in the same room. For a moment, recognition does what force could not.</p>
         <p>That was the first turn. Anger did not have to become my identity. It could become evidence. If I could admit the tenderness beneath it without despising myself, I could stop passing the absence forward.</p>
       </div>
     </article>
@@ -565,9 +631,14 @@
         <p>In 2025 I had to admit that I could explain systems and help other people ship while failing to direct those skills toward my own life. I collected frameworks faster than I used them. I could build a complex system before proving that a simple one worked. I was better at designing a life than living one.</p>
         <p>Ambition protected me too. As long as I was learning, building, or planning something impressive, I did not have to face the ordinary work I was avoiding. Philosophy could name an emotion before I felt it. A new tool could create motion without asking whether I was moving.</p>
         <blockquote class="scrap scrap--left">I was better at designing a life than living one. That sentence hurt because it was useful.<small>the 2025 postmortem</small></blockquote>
-        <div class="fragment fragment--wraps" role="img" aria-label="A close crop of worn boxing wraps and an annotated book">
-          <span>The wraps — An idea has to survive an ordinary morning.</span>
-        </div>
+        <figure class="evidence evidence--portrait">
+          <img src="/assets/founder-studio.jpg" width="720" height="1280" alt="A low-resolution vertical frame of Jai speaking into a microphone behind a laptop. The subtitle reads: I want to make something.">
+          <figcaption>I kept this frame because the sentence is smaller and more honest than the identity I tried to build around it: I want to make something.</figcaption>
+        </figure>
+        <figure class="evidence evidence--confession">
+          <img src="/assets/founder-ambition-confession.png" width="428" height="3785" alt="A long screenshot from an older personal page titled: I spent 67,000 dollars to become a productivity guru. Here's the one thing I learned: It's all a lie.">
+          <figcaption>An older page I built about the years I spent trying to systematize my way out of uncertainty. Even the confession became a landing page. That contradiction belongs here.</figcaption>
+        </figure>
         <p>I called my review a strategic postmortem because I needed evidence, not another story about how smart or broken I was. Professor Jiang gave me a clearer test: <strong>mass × energy × coordination</strong>.</p>
         <div class="formula" aria-label="Mass, energy, and coordination">
           <div><b>Mass</b>What have I gathered?</div>
@@ -587,14 +658,17 @@
         <p class="chapter__question">What if care is the highest form of coordination?</p>
       </header>
       <div class="chapter__body">
+        <p>No ships. No city walls. Just an alarm, wet ground, a friend waiting, and the quality of attention I bring into a room. The ordinary day became the place where every large idea had to prove itself.</p>
         <p>Tenderness is not the opposite of rigor. It is what makes rigor answerable to a human life. Once I saw the gap in myself, an idea had to change what I did with a morning, how I cared for my body, how I treated a friend, or what a student could do next. Knowledge had to return me to life with better judgment.</p>
         <p>That is why teaching became central. At KVibe Studios, I kept the workshops small because I did not want to perform expertise at a room. I wanted each person to ask several questions and leave with a clearer next move. Care was part of the method. So were real costs, failed demos, and the limits of what AI could do. If I could not show the receipt, I did not want to make the claim.</p>
         <p>I taught through <strong>means, motivation, and opportunity</strong>. Means asks what a person already has. Motivation asks what change they want enough to work for. Opportunity asks for the smallest useful result they can make now. The first win is small on purpose. It lets a person feel evidence, not just receive advice.</p>
         <blockquote class="scrap">6:00 a.m. The alarm is not a philosophy. Alex is waiting. Bring the wraps. Bring a plan. Be there.<small>the park, before sunrise</small></blockquote>
-        <div class="fragment fragment--chairs" role="img" aria-label="A close crop of three empty student chairs in a damp park before sunrise">
-          <span>The empty chairs — Do not perform at a room. Make it possible for someone to enter.</span>
-        </div>
+        <div class="absence" role="img" aria-label="An intentionally empty image frame for an undocumented early morning training session">6:04 a.m. No photograph. We were there to train.</div>
         <p>I am training Alex for a fight on August 11. We meet at 6 a.m. in a local park. That detail belongs here because another person now feels the quality of how I direct myself. If I arrive tired or distracted, his session gets worse. Care requires preparation. Tenderness can look like wrapped hands, a plan, and being there before sunrise.</p>
+        <figure class="evidence evidence--portrait-left">
+          <img src="/assets/founder-breathwork.jpg" width="1200" height="2134" alt="A vertical phone image of Jai mid-sentence holding a pink model brain beside a hand-drawn board asking why meditation is so hard.">
+          <figcaption>A cheap model brain, a marker, a question somebody might actually ask. I began to trust teaching when it stopped requiring me to look impressive.</figcaption>
+        </figure>
         <p>The park has changed for me too. It is where I train, notice where I live, and think without another screen in front of me. I wanted more time for imagination. I began to understand that imagination is not an escape from discipline. It depends on protected time, rest, health, and enough inner quiet to notice a future before it exists.</p>
         <p>The Great Books hold these forces at human scale. Anger can reveal a wound or consume a world. Ambition can build a civilization or make another person into material. Tenderness can restore what power alone cannot.</p>
         <p>I do not want this shelf to turn books into trophies or short summaries. I want each lecture to preserve Professor Jiang’s three questions and give the reader a place to continue. A question keeps the work open. It lets a person test an old argument against a current life.</p>
