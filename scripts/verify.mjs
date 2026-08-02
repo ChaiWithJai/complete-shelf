@@ -45,9 +45,13 @@ for (const required of ["The Civilizational Shelf", "/api/catalog.json", "easter
 }
 
 const founderArc = await readFile(path.join(root, "dist", "founders-arc", "index.html"), "utf8");
-for (const required of ["Anger", "Ambition", "Tenderness", "founder-classroom.jpg", "founder-breathwork.jpg", "Return to the shelf"]) {
-  assert(founderArc.includes(required), `Founder’s Arc is missing ${required}`);
+for (const required of ["This page was retracted", "Return to the shelf", "noindex"]) {
+  assert(founderArc.includes(required), `Retracted founder route is missing ${required}`);
 }
-assert(!founderArc.includes("three.module.js"), "Founder’s Arc must not load the 3D shelf runtime");
+assert(!founderArc.includes("three.module.js"), "Retracted founder route must not load the 3D shelf runtime");
+for (const banned of ["founder-classroom", "founder-breathwork", "founder-studio", "founder-arc-mirror", "founder-ambition"]) {
+  assert(!founderArc.includes(banned), `Retracted founder route must not reference ${banned}`);
+}
+assert(!index.includes("founder"), "Homepage must not carry founder markup, styles, or links while the story is retracted");
 
 console.log(`Verified ${catalog.volumes.length} volumes, ${allLectures.length} transcripts, and canonical playlist links.`);
