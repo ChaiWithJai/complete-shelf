@@ -9,6 +9,7 @@
     content="The Civilizational Shelf pairs Predictive History's Great Books playlist with transcripts and passages worth returning to."
   >
   <title>The Civilizational Shelf — Predictive History’s Great Books</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1636,6 +1637,354 @@
         width: 19px;
       }
     }
+
+    /* V3 — responsive reading path and lecture compass. */
+    .editorial-index__signal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      color: var(--ink) !important;
+    }
+
+    .editorial-index__signal::before {
+      width: 6px;
+      height: 6px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+      content: "";
+    }
+
+    .detail-panel {
+      width: min(36vw, 480px);
+      max-height: 82vh;
+      padding: 2px 8px 10px 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scrollbar-color: color-mix(in srgb, var(--ink) 30%, transparent) transparent;
+      scrollbar-width: thin;
+    }
+
+    .detail-title {
+      max-width: calc(100% - 46px);
+      font-size: clamp(2.7rem, 4.6vw, 4.8rem);
+      letter-spacing: -0.055em;
+      line-height: 0.9;
+      text-wrap: balance;
+    }
+
+    .detail-deck {
+      max-width: 40em;
+      margin-top: 18px;
+      font-size: clamp(0.92rem, 1.05vw, 1.08rem);
+      line-height: 1.48;
+    }
+
+    .lecture-guide {
+      display: grid;
+      gap: 13px;
+      margin-top: 22px;
+      padding: 17px;
+      border: 1px solid color-mix(in srgb, var(--accent) 54%, transparent);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 48%),
+        color-mix(in srgb, var(--paper-deep) 42%, transparent);
+      box-shadow: inset 3px 0 0 color-mix(in srgb, var(--accent) 76%, transparent);
+    }
+
+    .lecture-guide__header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .lecture-guide__header h3 {
+      max-width: 19ch;
+      margin: 4px 0 0;
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+    }
+
+    .lecture-guide__episode {
+      flex: 0 0 auto;
+      padding: 5px 7px;
+      border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+      color: var(--ink-soft);
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .lecture-guide__intro {
+      max-width: 46ch;
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--serif);
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .lecture-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .lecture-tabs[hidden] {
+      display: none;
+    }
+
+    .lecture-tabs button {
+      min-width: 44px;
+      min-height: 36px;
+      padding: 0 10px;
+      border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+      color: var(--ink-soft);
+      background: transparent;
+      font: 500 0.58rem/1 var(--mono);
+      letter-spacing: 0.1em;
+    }
+
+    .lecture-tabs button[aria-selected="true"] {
+      color: var(--paper);
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+
+    .lecture-questions {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+    }
+
+    .lecture-questions li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: stretch;
+      border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+    }
+
+    .lecture-question {
+      display: grid;
+      grid-template-columns: 25px minmax(0, 1fr);
+      gap: 2px 8px;
+      min-height: 58px;
+      padding: 9px 10px 9px 0;
+      border: 0;
+      color: var(--ink);
+      background: transparent;
+      text-align: left;
+    }
+
+    .lecture-question > span:first-child {
+      grid-row: 1 / 3;
+      padding-top: 2px;
+      color: var(--accent);
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+    }
+
+    .lecture-question strong {
+      font-family: var(--serif);
+      font-size: 0.86rem;
+      font-weight: 400;
+      line-height: 1.24;
+    }
+
+    .lecture-question > span:last-child {
+      color: var(--ink-soft);
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .lecture-question:hover,
+    .lecture-question:focus-visible {
+      background: color-mix(in srgb, var(--accent) 11%, transparent);
+      outline: none;
+    }
+
+    .lecture-question:focus-visible,
+    .lecture-question__listen:focus-visible,
+    .source-action:focus-visible,
+    .lecture-tabs button:focus-visible {
+      box-shadow: inset 0 0 0 2px var(--accent);
+    }
+
+    .lecture-question__listen {
+      display: grid;
+      min-width: 88px;
+      padding: 9px 0 9px 10px;
+      align-items: center;
+      color: var(--ink-soft);
+      font-size: 0.52rem;
+      line-height: 1.3;
+      text-align: right;
+      text-decoration: none;
+    }
+
+    .lecture-question__listen:hover {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .lecture-guide .detail-sources {
+      gap: 8px;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .detail-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .detail-links .source-action {
+      display: grid;
+      min-height: 44px;
+      padding: 0 12px;
+      border: 1px solid color-mix(in srgb, var(--ink) 38%, transparent);
+      align-items: center;
+      color: var(--ink);
+      font-size: 0.62rem;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .detail-links .source-action--primary {
+      color: var(--paper);
+      border-color: var(--ink);
+      background: var(--ink);
+    }
+
+    @media (max-width: 880px) {
+      .editorial-header {
+        top: max(18px, env(safe-area-inset-top));
+      }
+
+      .editorial-index {
+        max-width: 46vw;
+      }
+
+      .editorial-index__signal {
+        font-size: 0.56rem !important;
+      }
+
+      .mode-detail .editorial-header {
+        opacity: 0.72;
+      }
+
+      .detail-panel,
+      .mode-detail .detail-panel {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: auto;
+        max-height: 52dvh;
+        padding: 22px 22px max(22px, env(safe-area-inset-bottom));
+        border-top: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+        background:
+          linear-gradient(180deg, color-mix(in srgb, var(--paper) 97%, transparent), var(--paper) 64px);
+        box-shadow: 0 -20px 46px color-mix(in srgb, var(--paper-deep) 46%, transparent);
+        transform: translateY(24px);
+        overscroll-behavior: contain;
+      }
+
+      .mode-detail .detail-panel {
+        transform: translateY(0);
+      }
+
+      .detail-title {
+        max-width: calc(100% - 50px);
+        font-size: clamp(2.15rem, 8vw, 3.2rem);
+        line-height: 0.94;
+      }
+
+      .detail-deck {
+        display: -webkit-box;
+        margin-top: 12px;
+        overflow: hidden;
+        font-size: 0.88rem;
+        line-height: 1.42;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+
+      .lecture-guide {
+        margin-top: 16px;
+      }
+
+      .detail-controls {
+        padding-bottom: 4px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .editorial-index span:last-child {
+        display: block;
+      }
+
+      .editorial-identity strong {
+        font-size: 1rem;
+      }
+
+      .editorial-identity span,
+      .editorial-index span {
+        font-size: 0.5rem;
+        letter-spacing: 0.11em;
+      }
+
+      .selection__title {
+        max-width: 12ch;
+        font-size: 1.75rem;
+        line-height: 0.95;
+        text-wrap: balance;
+      }
+
+      .lecture-guide {
+        gap: 11px;
+        padding: 14px;
+      }
+
+      .lecture-guide__intro,
+      .lecture-question > span:last-child {
+        display: none;
+      }
+
+      .lecture-question {
+        min-height: 54px;
+      }
+
+      .lecture-question__listen {
+        min-width: 76px;
+      }
+    }
+
+    @media (max-width: 880px) and (orientation: landscape) {
+      .detail-panel,
+      .mode-detail .detail-panel {
+        top: 70px;
+        right: 12px;
+        bottom: 12px;
+        left: auto;
+        width: min(48vw, 480px);
+        max-height: none;
+        border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+      }
+    }
   </style>
   <script type="importmap">
     {
@@ -1658,8 +2007,8 @@
         <span>Predictive History · Great Books</span>
       </div>
       <div class="editorial-index">
-        <span>Living edition · 2026</span>
-        <span id="palette-label">Midnight · parchment · gold</span>
+        <span class="editorial-index__signal" id="edition-status">Volume 01 of 10</span>
+        <span id="palette-label">13 lectures · full transcripts</span>
       </div>
     </header>
 
@@ -1710,30 +2059,23 @@
       <p class="detail-deck" id="detail-deck">
         An invitation to read the great books as technologies of human possibility.
       </p>
-      <dl class="meta-list">
-        <div>
-          <dt>Binding</dt>
-          <dd id="detail-binding">Evergreen cloth · antique brass foil</dd>
+      <section class="lecture-guide" aria-labelledby="lecture-guide-title">
+        <header class="lecture-guide__header">
+          <div>
+            <p class="detail-sources__label">Professor Jiang's framework</p>
+            <h3 id="lecture-guide-title">Three questions for this lecture</h3>
+          </div>
+          <span class="lecture-guide__episode" id="lecture-guide-episode">Lecture 01</span>
+        </header>
+        <p class="lecture-guide__intro">Choose a question to open its companion spread, then follow the professor from that moment.</p>
+        <div class="lecture-tabs" id="lecture-tabs" role="tablist" aria-label="Choose a lecture"></div>
+        <ol class="lecture-questions" id="lecture-questions"></ol>
+        <div class="detail-sources" aria-label="Lecture sources and transcript">
+          <p class="detail-sources__label">Continue with the source</p>
+          <div class="detail-links" id="detail-links"></div>
         </div>
-        <div>
-          <dt>Format</dt>
-          <dd id="detail-format">148 × 216 mm · imagined edition</dd>
-        </div>
-        <div>
-          <dt>Theme</dt>
-          <dd id="detail-theme">Intent into implementation</dd>
-        </div>
-        <div>
-          <dt>Motif</dt>
-          <dd id="detail-motif">Nested brackets</dd>
-        </div>
-      </dl>
-      <div class="detail-sources" aria-label="Lecture sources and transcripts">
-        <p class="detail-sources__label">Watch · read · return</p>
-        <div class="detail-links" id="detail-links"></div>
-        <div class="highlight-links" id="highlight-links" aria-label="Helpful timestamps"></div>
         <a class="easter-egg-link" id="easter-egg-link" href="#">✦ The final leaf conceals another volume</a>
-      </div>
+      </section>
       <div class="page-navigation" role="group" aria-label="Browse sample pages">
         <button class="page-button" id="previous-page" type="button" aria-label="Previous sample page" disabled>
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10.5 3.5-4.5 4.5 4.5 4.5"></path></svg>
@@ -1842,6 +2184,7 @@
     const selectionTitle = document.querySelector("#selection-title");
     const selectionNote = document.querySelector("#selection-note");
     const counter = document.querySelector("#counter");
+    const editionStatus = document.querySelector("#edition-status");
     const paletteLabel = document.querySelector("#palette-label");
     const markers = document.querySelector("#markers");
     const previousButton = document.querySelector("#previous");
@@ -1858,12 +2201,10 @@
     const detailEyebrow = document.querySelector("#detail-eyebrow");
     const detailTitle = document.querySelector("#detail-title");
     const detailDeck = document.querySelector("#detail-deck");
-    const detailBinding = document.querySelector("#detail-binding");
-    const detailFormat = document.querySelector("#detail-format");
-    const detailTheme = document.querySelector("#detail-theme");
-    const detailMotif = document.querySelector("#detail-motif");
+    const lectureGuideEpisode = document.querySelector("#lecture-guide-episode");
+    const lectureTabs = document.querySelector("#lecture-tabs");
+    const lectureQuestions = document.querySelector("#lecture-questions");
     const detailLinks = document.querySelector("#detail-links");
-    const highlightLinks = document.querySelector("#highlight-links");
     const easterEggLink = document.querySelector("#easter-egg-link");
     const liveRegion = document.querySelector("#live-region");
     const pointerLabel = document.querySelector("#pointer-label");
@@ -2245,6 +2586,28 @@
       return texture;
     }
 
+    function drawFittedCanvasText(
+      ctx,
+      text,
+      x,
+      y,
+      maxWidth,
+      maxSize,
+      minSize = 30,
+      align = "left"
+    ) {
+      let size = maxSize;
+      ctx.letterSpacing = "0px";
+      ctx.textAlign = align;
+      ctx.font = `400 ${size}px "Iowan Old Style", Baskerville, Georgia, serif`;
+      while (size > minSize && ctx.measureText(text).width > maxWidth) {
+        size -= 2;
+        ctx.font = `400 ${size}px "Iowan Old Style", Baskerville, Georgia, serif`;
+      }
+      ctx.fillText(text, x, y, maxWidth);
+      return size;
+    }
+
     function makeCoverTexture(book) {
       const canvasTexture = document.createElement("canvas");
       canvasTexture.width = 768;
@@ -2318,9 +2681,16 @@
       ctx.letterSpacing = "4px";
       ctx.fillText(`CIVILIZATIONAL SHELF  /  ${book.roman}`, canvasTexture.width / 2, 92);
 
-      const titleSize = book.title.length > 10 ? 72 : 88;
-      ctx.font = `400 ${titleSize}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.fillText(book.title, canvasTexture.width / 2, canvasTexture.height * 0.72);
+      drawFittedCanvasText(
+        ctx,
+        book.title,
+        canvasTexture.width / 2,
+        canvasTexture.height * 0.72,
+        canvasTexture.width - 136,
+        book.title.length > 10 ? 72 : 88,
+        40,
+        "center"
+      );
       ctx.font = '500 16px Inter, "Helvetica Neue", Arial, sans-serif';
       ctx.fillText(book.discipline.toUpperCase(), canvasTexture.width / 2, canvasTexture.height * 0.79);
 
@@ -2351,9 +2721,15 @@
       ctx.stroke();
       ctx.globalAlpha = 1;
 
-      const titleSize = book.title.length > 10 ? 64 : 78;
-      ctx.font = `400 ${titleSize}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.fillText(book.title, 58, 1020);
+      drawFittedCanvasText(
+        ctx,
+        book.title,
+        58,
+        1020,
+        foilCanvas.width - 116,
+        book.title.length > 10 ? 64 : 78,
+        38
+      );
       ctx.font = '500 14px Inter, "Helvetica Neue", Arial, sans-serif';
       ctx.letterSpacing = "2.4px";
       ctx.fillText(book.discipline.toUpperCase(), 60, 1066);
@@ -2993,9 +3369,16 @@
       ctx.save();
       ctx.translate(foilCanvas.width * 0.5, foilCanvas.height * 0.5);
       ctx.rotate(Math.PI / 2);
-      ctx.font = `400 ${book.title.length > 10 ? 58 : 68}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.letterSpacing = "0px";
-      ctx.fillText(book.title, 0, 0);
+      drawFittedCanvasText(
+        ctx,
+        book.title,
+        0,
+        0,
+        foilCanvas.height - 360,
+        book.title.length > 10 ? 58 : 68,
+        34,
+        "center"
+      );
       ctx.restore();
 
       ctx.beginPath();
@@ -3091,9 +3474,15 @@
       ctx.lineTo(548, 574);
       ctx.stroke();
 
-      ctx.font = `400 ${book.title.length > 10 ? 52 : 62}px "Iowan Old Style", Baskerville, Georgia, serif`;
-      ctx.letterSpacing = "0px";
-      ctx.fillText(book.title, 68, 956);
+      drawFittedCanvasText(
+        ctx,
+        book.title,
+        68,
+        956,
+        foilCanvas.width - 136,
+        book.title.length > 10 ? 52 : 62,
+        34
+      );
       ctx.font = '500 15px Inter, "Helvetica Neue", Arial, sans-serif';
       ctx.letterSpacing = "2.6px";
       ctx.fillText(book.discipline.toUpperCase(), 70, 1004);
@@ -3861,13 +4250,15 @@
 
     function configureResponsiveTargets() {
       const narrow = viewWidth < 820;
-      shelfCameraPosition.set(0, narrow ? 2.02 : 1.92, narrow ? 8.7 : 8.1);
+      const portraitDetail = viewWidth < 880 && viewHeight > viewWidth;
+      shelfCameraPosition.set(0, narrow ? 2.02 : 1.92, narrow ? 10.35 : 8.1);
       shelfCameraTarget.set(0, narrow ? 1.57 : 1.55, 0);
-      inspectPosition.set(narrow ? 0 : -2.25, narrow ? 2.3 : 1.56, narrow ? 0.15 : 0);
-      inspectCameraPosition.set(narrow ? 0 : -0.52, narrow ? 2.46 : 1.78, narrow ? 5.7 : 5.25);
+      inspectPosition.set(portraitDetail ? 0 : -2.25, portraitDetail ? 2.55 : 1.56, portraitDetail ? 0.15 : 0);
+      inspectCameraPosition.set(portraitDetail ? 0 : -0.52, portraitDetail ? 2.7 : 1.78, portraitDetail ? 6.7 : 5.25);
       inspectCameraTarget.copy(inspectPosition);
+      if (portraitDetail) inspectCameraTarget.y -= 0.96;
 
-      if (narrow) {
+      if (portraitDetail) {
         detailViewOffsetX = 0;
         detailSafeWidth = viewWidth;
         return;
@@ -3884,7 +4275,8 @@
     }
 
     function getInspectScale() {
-      if (!activeBook || viewWidth < 820) return 0.82;
+      if (!activeBook) return 0.82;
+      if (viewWidth < 880 && viewHeight > viewWidth) return 0.72;
       const distance = Math.abs(inspectCameraPosition.z - inspectPosition.z);
       const worldHeight = 2 * distance * Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5));
       const pixelsPerWorld = viewHeight / Math.max(worldHeight, 0.001);
@@ -4203,7 +4595,10 @@
       selectionTitle.textContent = book.title;
       selectionNote.textContent = book.note;
       counter.textContent = `${pad(selectedIndex + 1)} / ${pad(BOOKS.length)}`;
-      paletteLabel.textContent = book.paletteLabel;
+      editionStatus.textContent = `Volume ${pad(selectedIndex + 1)} of ${pad(BOOKS.length)}`;
+      paletteLabel.textContent = book.lectureIds.length > 1
+        ? `${book.lectureIds.length} lectures · full transcripts`
+        : `Lecture ${pad(LECTURES.get(book.lectureIds[0])?.episode || selectedIndex + 1)} · full transcript`;
       inspectButton.setAttribute("aria-label", `Open ${book.title}`);
       applyBookTheme(book);
 
@@ -4223,39 +4618,103 @@
       detailEyebrow.textContent = `Volume ${book.roman} · ${book.discipline}`;
       detailTitle.textContent = book.title;
       detailDeck.textContent = book.deck;
-      detailBinding.textContent = book.binding;
-      detailFormat.textContent = book.format;
-      detailTheme.textContent = book.theme;
-      detailMotif.textContent = book.motif;
 
       const lectures = book.lectureIds.map((id) => LECTURES.get(id)).filter(Boolean);
-      detailLinks.replaceChildren();
-      highlightLinks.replaceChildren();
+      lectureTabs.replaceChildren();
 
-      lectures.forEach((lecture, lectureIndex) => {
+      const showLecture = (lecture, lectureIndex, focusTab = false) => {
+        lectureGuideEpisode.textContent = `Lecture ${pad(lecture.episode)}`;
+        lectureQuestions.replaceChildren();
+        detailLinks.replaceChildren();
+
+        [...lectureTabs.children].forEach((tab, index) => {
+          const selected = index === lectureIndex;
+          tab.setAttribute("aria-selected", String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          if (selected && focusTab) tab.focus({ preventScroll: true });
+        });
+
+        const questions = lecture.questions?.slice(0, 3)
+          || lecture.highlights?.slice(0, 3).map((highlight) => ({
+            start: highlight.start,
+            prompt: highlight.label
+          }))
+          || [];
+
+        questions.forEach((question, questionIndex) => {
+          const item = document.createElement("li");
+          const openPages = document.createElement("button");
+          const number = document.createElement("span");
+          const prompt = document.createElement("strong");
+          const pageCue = document.createElement("span");
+          const listen = document.createElement("a");
+
+          openPages.type = "button";
+          openPages.className = "lecture-question";
+          openPages.setAttribute(
+            "aria-label",
+            `${question.prompt} Open companion spread ${questionIndex + 2}.`
+          );
+          number.textContent = pad(questionIndex + 1);
+          prompt.textContent = question.prompt;
+          pageCue.textContent = `Open spread ${questionIndex + 2}`;
+          openPages.append(number, prompt, pageCue);
+          openPages.addEventListener("click", () => {
+            if (!readingOpen) setReadingOpen(true, false);
+            currentSpread = Math.min(questionIndex + 1, SPREAD_COUNT - 1);
+            updatePageControls(true);
+            liveRegion.textContent = `Opened the companion spread for question ${questionIndex + 1}: ${question.prompt}`;
+            requestFrame();
+          });
+
+          listen.href = `${lecture.youtubeUrl}&t=${question.start}s`;
+          listen.target = "_blank";
+          listen.rel = "noreferrer";
+          listen.className = "lecture-question__listen";
+          listen.textContent = `Listen from ${formatTimestamp(question.start)}`;
+          listen.setAttribute("aria-label", `${question.prompt} Listen from ${formatTimestamp(question.start)} on YouTube`);
+          item.append(openPages, listen);
+          lectureQuestions.append(item);
+        });
+
         const watch = document.createElement("a");
         watch.href = lecture.youtubeUrl;
         watch.target = "_blank";
         watch.rel = "noreferrer";
-        watch.textContent = lectures.length > 1 ? `Watch ${lectureIndex + 9}` : "Watch on YouTube";
+        watch.className = "source-action source-action--primary";
+        watch.textContent = "Watch lecture";
         watch.setAttribute("aria-label", `Watch ${lecture.title} on YouTube`);
 
         const transcript = document.createElement("a");
         transcript.href = `/transcripts/${lecture.id}.txt`;
         transcript.target = "_blank";
-        transcript.textContent = lectures.length > 1 ? `Transcript ${lectureIndex + 9}` : "Read transcript";
+        transcript.rel = "noreferrer";
+        transcript.className = "source-action";
+        transcript.textContent = "Read transcript";
         transcript.setAttribute("aria-label", `Read transcript for ${lecture.title}`);
         detailLinks.append(watch, transcript);
+      };
 
-        lecture.highlights?.forEach((highlight) => {
-          const link = document.createElement("a");
-          link.href = `${lecture.youtubeUrl}&t=${highlight.start}s`;
-          link.target = "_blank";
-          link.rel = "noreferrer";
-          link.textContent = `${formatTimestamp(highlight.start)} · ${highlight.label}`;
-          highlightLinks.append(link);
+      if (lectures.length > 1) {
+        lectures.forEach((lecture, lectureIndex) => {
+          const tab = document.createElement("button");
+          tab.type = "button";
+          tab.role = "tab";
+          tab.textContent = pad(lecture.episode);
+          tab.setAttribute("aria-label", `Show the three questions for lecture ${lecture.episode}`);
+          tab.addEventListener("click", () => showLecture(lecture, lectureIndex));
+          tab.addEventListener("keydown", (event) => {
+            if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+            event.preventDefault();
+            const direction = event.key === "ArrowRight" ? 1 : -1;
+            const nextIndex = mod(lectureIndex + direction, lectures.length);
+            showLecture(lectures[nextIndex], nextIndex, true);
+          });
+          lectureTabs.append(tab);
         });
-      });
+      }
+      lectureTabs.hidden = lectures.length <= 1;
+      if (lectures[0]) showLecture(lectures[0], 0);
 
       const specialCollection = SPECIAL_COLLECTIONS.get(book.easterEggCollectionId);
       easterEggLink.dataset.collectionId = specialCollection?.id || "";
@@ -5344,7 +5803,8 @@
         const wrappedAcrossSeam = rig.lastOffset !== null
           && Math.abs(offset - rig.lastOffset) > BOOKS.length * 0.5;
         const focus = 1 - clamp(distance, 0, 1);
-        const targetX = offset * spacing;
+        const responsiveSpacing = viewWidth < 820 ? 1.24 : spacing;
+        const targetX = offset * responsiveSpacing;
         const targetY = shelfBoardTop + rig.base.height * 0.5 + focus * 0.15;
         const targetZ = 0.13 + focus * 0.24 - Math.min(distance, 2.8) * 0.07;
         const targetRotationY = -offset * 0.105;
@@ -5558,13 +6018,9 @@
       }
 
       if (mode === "detail" && event.key === "Tab") {
-        const focusables = [
-          closeButton,
-          toggleBookButton,
-          previousPageButton,
-          nextPageButton,
-          resetButton
-        ].filter((element) => !element.disabled);
+        const focusables = [...detailPanel.querySelectorAll(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )].filter((element) => !element.hidden && element.offsetParent !== null);
         const current = focusables.indexOf(document.activeElement);
         const next = event.shiftKey
           ? (current <= 0 ? focusables.length - 1 : current - 1)

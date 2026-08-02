@@ -20,6 +20,11 @@ assert(catalog.volumes.some((volume) => volume.isEasterEgg && volume.lectureIds.
 for (const lecture of catalog.lectures) {
   assert(lecture.youtubeUrl.includes(`list=${catalog.canonicalPlaylist.youtubeId}`), `${lecture.id} is not linked through the canonical playlist`);
   assert(lecture.highlights.length >= 4, `${lecture.id} needs at least four helpful timestamps`);
+  assert(lecture.questions?.length === 3, `${lecture.id} must expose the professor's three-question framework`);
+  for (const question of lecture.questions) {
+    assert(question.prompt?.endsWith("?"), `${lecture.id} has a malformed guiding question`);
+    assert(Number.isFinite(question.start) && question.start >= 0, `${lecture.id} has an invalid question timestamp`);
+  }
 }
 
 const allLectures = [
@@ -35,7 +40,7 @@ for (const lecture of allLectures) {
 }
 
 const index = await readFile(path.join(root, "dist", "index.html"), "utf8");
-for (const required of ["The Civilizational Shelf", "/api/catalog.json", "easter-egg-link", "highlight-links"]) {
+for (const required of ["The Civilizational Shelf", "/api/catalog.json", "easter-egg-link", "lecture-questions"]) {
   assert(index.includes(required), `Built site is missing ${required}`);
 }
 
