@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c111c">
-  <meta name="description" content="Anger, ambition, and tenderness: the personal story behind The Civilizational Shelf.">
-  <title>Anger, Ambition, Tenderness — The Founder’s Arc</title>
+  <meta name="description" content="Why The Civilizational Shelf exists: three published essays, thirteen lectures, thirty-nine questions, and the gaps left honest.">
+  <title>Why this shelf — a note from the maker</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,16 +44,6 @@
       text-rendering: optimizeLegibility;
     }
 
-    body::before {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      opacity: 0.055;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
-      content: "";
-      pointer-events: none;
-    }
-
     a { color: inherit; }
 
     .masthead {
@@ -61,7 +51,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      width: min(1180px, calc(100% - 44px));
+      width: min(1080px, calc(100% - 44px));
       margin: 0 auto;
       padding: 25px 0;
       border-bottom: 1px solid var(--rule);
@@ -71,13 +61,9 @@
       text-transform: uppercase;
     }
 
-    .masthead a {
-      text-decoration: none;
-    }
+    .masthead a { text-decoration: none; }
 
-    .masthead__return {
-      color: var(--ink);
-    }
+    .masthead__return { color: var(--ink); }
 
     .masthead__return::before {
       margin-right: 8px;
@@ -86,49 +72,22 @@
 
     .hero,
     .chapter,
+    .inventory,
     .letter,
+    .stranger,
     .sources {
-      width: min(1180px, calc(100% - 44px));
+      width: min(1080px, calc(100% - 44px));
       margin-inline: auto;
     }
 
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1.2fr);
-      gap: clamp(40px, 7vw, 104px);
-      align-items: end;
-      min-height: calc(100svh - 70px);
-      padding: clamp(70px, 11vw, 150px) 0 52px;
-    }
-
-    .found-note {
-      width: fit-content;
-      max-width: 24rem;
-      margin: 0 0 48px -18px;
-      padding: 14px 18px 16px;
-      background: #d6c9aa;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
-      color: #27241f;
-      font-family: "Bradley Hand", "Segoe Print", cursive;
-      font-size: 1.05rem;
-      line-height: 1.35;
-      transform: rotate(-1.5deg);
-    }
-
-    .found-note span {
-      display: block;
-      margin-top: 9px;
-      color: #655d51;
-      font-family: var(--sans);
-      font-size: 0.52rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      max-width: 46rem;
+      padding: clamp(70px, 11vw, 140px) 0 clamp(60px, 9vw, 110px);
     }
 
     .eyebrow,
     .chapter__number,
     .image-note,
-    .sources,
     .spine span small {
       font-family: var(--sans);
       font-size: 0.64rem;
@@ -143,20 +102,32 @@
     }
 
     h1 {
-      max-width: 8ch;
       margin: 0;
-      font-size: clamp(4.2rem, 9.3vw, 8.8rem);
+      font-size: clamp(3.2rem, 8vw, 6.4rem);
       font-weight: 400;
-      letter-spacing: -0.075em;
-      line-height: 0.78;
+      letter-spacing: -0.06em;
+      line-height: 0.92;
     }
 
-    .hero__question {
-      max-width: 34rem;
-      margin: 38px 0 0;
+    .hero__body {
+      margin-top: 40px;
       color: var(--ink);
-      font-size: clamp(1.15rem, 2vw, 1.52rem);
-      line-height: 1.52;
+      font-size: clamp(1.08rem, 1.8vw, 1.3rem);
+      line-height: 1.7;
+    }
+
+    .hero__body p { margin: 0 0 1.35em; }
+    .hero__body strong { color: var(--paper); font-weight: 400; }
+    .hero__body em { color: var(--gold); font-style: normal; }
+
+    .rule-note {
+      margin: 34px 0 0;
+      padding: 18px 20px;
+      border: 1px solid var(--rule);
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      line-height: 1.65;
     }
 
     .spine {
@@ -179,92 +150,190 @@
     .spine span + span { border-top: 1px solid var(--rule); }
     .spine span small { color: var(--gold); }
 
-    .hero__image {
-      position: relative;
-      align-self: center;
-      margin: 0;
-    }
-
-    .hero__image::before {
-      position: absolute;
-      inset: -1px;
-      z-index: 1;
-      border: 1px solid rgba(203, 178, 116, 0.42);
-      content: "";
-      pointer-events: none;
-    }
-
-    .hero__image img {
-      display: block;
-      width: 100%;
-      height: auto;
-      filter: saturate(0.78) contrast(1.04);
-    }
-
-    .hero__image figcaption {
-      display: grid;
-      grid-template-columns: 10rem 1fr;
-      gap: 22px;
-      margin-top: 16px;
+    .spine-caveat {
+      margin: 14px 0 0;
       color: var(--quiet);
-      font-size: 0.88rem;
-      line-height: 1.55;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      line-height: 1.6;
     }
 
-    .image-note { color: var(--gold); }
-
-    .mirror-line {
-      width: min(820px, calc(100% - 44px));
-      margin: clamp(70px, 10vw, 130px) auto;
-      color: var(--paper);
-      font-size: clamp(2.15rem, 5vw, 4.4rem);
-      letter-spacing: -0.045em;
-      line-height: 1.05;
-      text-align: center;
-      text-wrap: balance;
+    .chapter {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1fr);
+      gap: clamp(50px, 9vw, 130px);
+      padding: clamp(80px, 11vw, 150px) 0;
+      border-top: 1px solid var(--rule);
     }
 
-    .mirror-line em {
+    .chapter__number {
+      margin: 0 0 16px;
       color: var(--gold);
-      font-style: normal;
     }
 
-    .dante-map {
+    .chapter h2,
+    .inventory h2,
+    .letter h2,
+    .stranger h2 {
+      max-width: 10ch;
+      margin: 0;
+      font-size: clamp(2.8rem, 6.4vw, 5.6rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.9;
+    }
+
+    .chapter__question {
+      max-width: 24rem;
+      margin: 27px 0 0;
+      color: var(--ink);
+      font-size: 1.14rem;
+      line-height: 1.5;
+    }
+
+    .chapter__body,
+    .inventory__body,
+    .letter__body,
+    .stranger__body {
+      max-width: 42rem;
+      color: var(--ink);
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      line-height: 1.72;
+    }
+
+    .chapter__body p,
+    .inventory__body p,
+    .letter__body p,
+    .stranger__body p { margin: 0 0 1.35em; }
+
+    .chapter__body p:last-child,
+    .inventory__body p:last-child,
+    .letter__body p:last-child,
+    .stranger__body p:last-child { margin-bottom: 0; }
+
+    .chapter__body strong,
+    .inventory__body strong,
+    .letter__body strong,
+    .stranger__body strong { color: var(--paper); font-weight: 400; }
+
+    .evidence {
+      margin: 50px 0 44px;
+    }
+
+    .evidence img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      filter: saturate(0.88) contrast(1.02);
+    }
+
+    .evidence figcaption {
+      max-width: 32rem;
+      margin-top: 12px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+    }
+
+    .evidence figcaption b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .evidence--portrait {
+      width: min(72%, 380px);
+      margin-left: auto;
+    }
+
+    .evidence--portrait-left {
+      width: min(72%, 380px);
+    }
+
+    .absence {
+      display: grid;
+      place-items: end start;
+      min-height: 220px;
+      margin: 50px 0 44px;
+      padding: 18px;
+      border: 1px dashed rgba(241, 234, 223, 0.28);
+      background: rgba(255, 255, 255, 0.015);
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .cited {
+      margin: 40px 0;
+      padding-left: 22px;
+      border-left: 2px solid var(--gold);
+      color: var(--paper);
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.45;
+    }
+
+    .cited p { margin: 0; }
+
+    .cited footer {
+      margin-top: 12px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .inventory {
+      padding: clamp(80px, 11vw, 150px) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .inventory__body { margin-top: 42px; }
+
+    .questions {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      width: min(920px, calc(100% - 44px));
-      margin: -66px auto clamp(90px, 13vw, 170px);
+      gap: 1px;
+      margin: 42px 0;
       border: 1px solid var(--rule);
+      background: var(--rule);
     }
 
-    .dante-map div {
-      min-height: 140px;
-      padding: 22px;
+    .questions div {
+      min-height: 120px;
+      padding: 18px;
+      background: var(--night-soft);
+      color: var(--ink);
+      font-size: 1.02rem;
+      line-height: 1.45;
     }
 
-    .dante-map div + div { border-left: 1px solid var(--rule); }
-
-    .dante-map b {
+    .questions b {
       display: block;
+      margin-bottom: 10px;
       color: var(--gold);
       font-family: var(--sans);
       font-size: 0.58rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    .dante-map span {
-      display: block;
-      margin-top: 25px;
-      color: var(--ink);
-      font-size: 1.12rem;
-      line-height: 1.35;
-    }
-
     .dream {
-      width: min(1040px, calc(100% - 44px));
-      margin: 0 auto clamp(100px, 14vw, 180px);
+      width: min(1080px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: clamp(80px, 11vw, 150px) 0;
+      border-top: 1px solid var(--rule);
     }
 
     .dream img {
@@ -277,280 +346,84 @@
 
     .dream figcaption {
       display: grid;
-      grid-template-columns: 10rem 1fr;
+      grid-template-columns: 11rem 1fr;
       gap: 22px;
-      max-width: 48rem;
+      max-width: 52rem;
       margin-top: 14px;
       color: var(--quiet);
       font-family: var(--sans);
-      font-size: 0.67rem;
-      line-height: 1.6;
+      font-size: 0.72rem;
+      line-height: 1.65;
     }
 
-    .chapter {
+    .image-note { color: var(--gold); }
+
+    .letter,
+    .stranger {
       display: grid;
-      grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1fr);
-      gap: clamp(50px, 9vw, 140px);
-      padding: clamp(90px, 12vw, 160px) 0;
+      grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1fr);
+      gap: clamp(50px, 9vw, 130px);
+      padding: clamp(80px, 12vw, 160px) 0;
       border-top: 1px solid var(--rule);
     }
 
-    .chapter__number {
-      margin: 0 0 16px;
-      color: var(--gold);
-    }
-
-    .chapter h2,
-    .letter h2 {
-      max-width: 8ch;
-      margin: 0;
-      font-size: clamp(3.2rem, 7vw, 6.8rem);
-      font-weight: 400;
-      letter-spacing: -0.065em;
-      line-height: 0.86;
-    }
-
-    .chapter__question {
-      max-width: 24rem;
-      margin: 27px 0 0;
-      color: var(--ink);
-      font-size: 1.18rem;
-      line-height: 1.5;
-    }
-
-    .chapter__body {
-      max-width: 42rem;
-      color: var(--ink);
-      font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-      line-height: 1.72;
-    }
-
-    .chapter__body p { margin: 0 0 1.35em; }
-    .chapter__body strong { color: var(--paper); font-weight: 400; }
-
-    .scrap {
-      width: min(34rem, calc(100% - 24px));
-      margin: 48px 0 48px auto;
-      padding: 21px 24px 22px;
-      border-top: 1px solid rgba(39, 36, 31, 0.25);
-      background: #e7dfcf;
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.2);
-      color: #2b2925;
-      font-family: "Bradley Hand", "Segoe Print", cursive;
-      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
-      line-height: 1.35;
-      transform: rotate(0.8deg);
-    }
-
-    .scrap--left {
-      margin-right: auto;
-      margin-left: -18px;
-      transform: rotate(-1deg);
-    }
-
-    .scrap small {
-      display: block;
-      margin-top: 16px;
-      color: #746d62;
-      font-family: var(--sans);
-      font-size: 0.53rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .evidence {
-      margin: 54px 0 44px;
-    }
-
-    .evidence img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border: 1px solid var(--rule);
-      filter: saturate(0.88) contrast(1.02);
-    }
-
-    .evidence figcaption {
-      max-width: 31rem;
-      margin-top: 12px;
-      color: var(--quiet);
-      font-family: var(--sans);
-      font-size: 0.67rem;
-      letter-spacing: 0.04em;
-      line-height: 1.55;
-    }
-
-    .evidence--portrait {
-      width: min(72%, 390px);
-      margin-left: auto;
-      transform: rotate(0.7deg);
-    }
-
-    .evidence--portrait-left {
-      width: min(72%, 390px);
-      transform: rotate(-0.7deg);
-    }
-
-    .evidence--confession {
-      width: min(72%, 380px);
-      margin-left: auto;
-    }
-
-    .evidence--confession img {
-      width: 100%;
-      height: min(70vh, 720px);
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .absence {
-      display: grid;
-      place-items: end start;
-      min-height: 270px;
-      margin: 54px 0 44px;
-      padding: 18px;
-      border: 1px dashed rgba(241, 234, 223, 0.28);
-      background: rgba(255, 255, 255, 0.015);
-      color: var(--quiet);
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.13em;
-      line-height: 1.6;
-      text-transform: uppercase;
-    }
-
-    .formula {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1px;
-      margin: 42px 0;
-      border: 1px solid var(--rule);
-      background: var(--rule);
-    }
-
-    .formula div {
-      min-height: 130px;
-      padding: 18px;
-      background: var(--night-soft);
-      color: var(--quiet);
-      font-family: var(--sans);
-      font-size: 0.77rem;
-      line-height: 1.55;
-    }
-
-    .formula b {
-      display: block;
-      margin-bottom: 10px;
+    .practice {
+      margin: 36px 0;
       color: var(--paper);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .letter {
-      display: grid;
-      grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1fr);
-      gap: clamp(50px, 9vw, 140px);
-      padding: clamp(100px, 14vw, 190px) 0;
-      border-top: 1px solid var(--rule);
-    }
-
-    .gift {
-      width: min(780px, calc(100% - 44px));
-      margin: clamp(90px, 14vw, 190px) auto;
-      padding: clamp(36px, 7vw, 76px);
-      border: 1px solid rgba(39, 36, 31, 0.25);
-      background: #ddd2ba;
-      box-shadow: 0 38px 100px rgba(0, 0, 0, 0.3);
-      color: #292620;
-      transform: rotate(-0.4deg);
-    }
-
-    .gift__label {
-      margin: 0 0 42px;
-      font-family: var(--sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .gift blockquote {
-      margin: 0;
-      font-size: clamp(2rem, 5.4vw, 4rem);
-      letter-spacing: -0.045em;
-      line-height: 1.05;
+      font-size: clamp(1.7rem, 4vw, 2.9rem);
+      letter-spacing: -0.035em;
+      line-height: 1.15;
       text-wrap: balance;
     }
 
-    .gift p:last-child {
-      max-width: 34rem;
-      margin: 40px 0 0;
-      font-family: "Bradley Hand", "Segoe Print", cursive;
-      font-size: 1.13rem;
-      line-height: 1.45;
-    }
-
-    .letter__body {
-      max-width: 42rem;
-      color: var(--ink);
-      font-size: clamp(1.1rem, 1.9vw, 1.35rem);
-      line-height: 1.7;
-    }
-
-    .letter__body p { margin: 0 0 1.4em; }
-    .letter__body strong { color: var(--paper); font-weight: 400; }
-
     .sources {
-      padding: 32px 0 64px;
+      padding: 40px 0 72px;
       border-top: 1px solid var(--rule);
       color: var(--quiet);
-      line-height: 1.8;
-      text-transform: none;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      line-height: 1.85;
     }
 
-    .sources p { max-width: 60rem; margin: 0 0 8px; }
+    .sources h3 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .sources p, .sources ul { max-width: 60rem; margin: 0 0 10px; }
+    .sources ul { padding-left: 18px; }
+    .sources li { margin-bottom: 4px; }
     .sources a { color: var(--ink); }
+    .sources .gaps { margin-top: 28px; }
 
     @media (max-width: 760px) {
       .masthead { padding-block: 19px; }
       .masthead span { display: none; }
 
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 72px;
-      }
-
-      h1 { font-size: clamp(4rem, 23vw, 6.4rem); }
-      .found-note { margin-left: 0; }
-      .hero__image { margin-top: 8px; }
-      .hero__image figcaption { grid-template-columns: 1fr; gap: 5px; }
+      h1 { font-size: clamp(2.9rem, 14vw, 4.4rem); }
 
       .chapter,
-      .letter {
+      .letter,
+      .stranger {
         grid-template-columns: 1fr;
-        gap: 42px;
+        gap: 40px;
       }
 
       .chapter h2,
-      .letter h2 { max-width: 10ch; }
+      .inventory h2,
+      .letter h2,
+      .stranger h2 { max-width: 12ch; }
       .chapter__question { max-width: 30rem; }
 
-      .formula { grid-template-columns: 1fr; }
-      .formula div { min-height: auto; }
+      .questions { grid-template-columns: 1fr; }
+      .questions div { min-height: auto; }
       .evidence--portrait,
-      .evidence--portrait-left,
-      .evidence--confession { width: calc(100% - 20px); }
-      .evidence--portrait,
-      .evidence--portrait-left { transform: none; }
-      .dante-map { grid-template-columns: 1fr; margin-top: -30px; }
-      .dante-map div { min-height: auto; }
-      .dante-map div + div { border-top: 1px solid var(--rule); border-left: 0; }
+      .evidence--portrait-left { width: calc(100% - 12px); }
       .dream figcaption { grid-template-columns: 1fr; gap: 5px; }
-      .scrap,
-      .scrap--left { width: 100%; margin-inline: 0; transform: none; }
-      .gift { transform: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -566,42 +439,20 @@
 
   <main>
     <section class="hero">
-      <div>
-        <p class="found-note">for whoever found this: take what you need. leave the rest here.<span>Queens, New York · still becoming</span></p>
-        <p class="eyebrow">The founder’s arc</p>
-        <h1>Dear stranger,</h1>
-        <p class="hero__question">I made this because I got tired of using knowledge to stand one inch outside my own life. This is the story of the three forces I found underneath: anger, ambition, and tenderness.</p>
-        <nav class="spine" aria-label="The three chapters">
-          <span>Anger <small>I</small></span>
-          <span>Ambition <small>II</small></span>
-          <span>Tenderness <small>III</small></span>
-        </nav>
+      <p class="eyebrow">Why this shelf exists</p>
+      <h1>The man in the mirror</h1>
+      <div class="hero__body">
+        <p>On June 21, 2026, I published a short essay called <a href="https://x.com/ChaiWithJai/status/2068545237769716091">“What is a father?”</a> Its answer is three things — protection, guidance, unconditional love — and its last image is the man in the mirror, the one who has to provide them now. It ends with a single practice: <em>“What is one thing I can do for myself today?”</em></p>
+        <p>This page is the longer answer to how that mirror produced a shelf of Great Books lectures. The question underneath it is not finished, so this page will not pretend it is: <strong>can I keep the force of my ambition without turning people into material, freezing inside anger, or abandoning the imaginative life I meant to build?</strong></p>
       </div>
-
-      <figure class="hero__image">
-        <img src="/assets/founder-classroom.jpg" width="1200" height="900" alt="Jai holds a phone close for a classroom selfie while students smile, wave, and sit among laptops, water bottles, and sticky notes.">
-        <figcaption>
-          <span class="image-note">A room I was lucky to enter</span>
-          <span>Later, students said the Iliad lecture felt like a mirror. I think I had been holding it up for them without noticing it was pointed back at me.</span>
-        </figcaption>
-      </figure>
+      <p class="rule-note">One rule governs this page. Everything on it is something I published, something you can check, or a gap I have labeled instead of filling. Where something is imagined, it says so. Where a photograph does not exist, there is no photograph.</p>
+      <nav class="spine" aria-label="The three chapters">
+        <span>Anger <small>I</small></span>
+        <span>Ambition <small>II</small></span>
+        <span>Tenderness <small>III</small></span>
+      </nav>
+      <p class="spine-caveat">These three words are my frame, taken from my own essays. They are not Professor Jiang’s framework, and they do not rename his lectures — his lectures keep their own questions, further down.</p>
     </section>
-
-    <p class="mirror-line">Anger was the wound. Ambition became the armor. <em>Tenderness taught me what strength was for.</em></p>
-
-    <aside class="dante-map" aria-label="The Dante-shaped movement of the story">
-      <div><b>The dark wood</b><span>Admit that I am lost.</span></div>
-      <div><b>The climb</b><span>Choose what the struggle is for.</span></div>
-      <div><b>Return to the stars</b><span>Bring something back for another person.</span></div>
-    </aside>
-
-    <figure class="dream">
-      <img src="/assets/founder-arc-mirror.webp" width="1440" height="920" alt="An imagined dawn park with a cracked mirror, boxing wraps, an annotated book, empty chairs, and an Achilles-like reflection.">
-      <figcaption>
-        <span class="image-note">The imagined world</span>
-        <span>This is not documentary evidence. AI assembled the real objects of the story—the park, wraps, book, empty chairs, and Achilles in the mirror—into the world they made in my head.</span>
-      </figcaption>
-    </figure>
 
     <article class="chapter" id="anger">
       <header>
@@ -610,14 +461,10 @@
         <p class="chapter__question">What was it protecting?</p>
       </header>
       <div class="chapter__body">
-        <p>Achilles gave me a language for a force I knew but did not know how to hold. His anger is immense because his wound is immense. He can bend a war around his refusal, but he cannot make himself invulnerable to grief.</p>
-        <p>The poem does not let us admire anger from a safe distance. It asks whom our anger punishes. It asks what it costs while we call it strength. Most painfully, it asks what softer truth the anger has been hired to protect.</p>
-        <blockquote class="scrap">Dear Dad, I kept calling the wound a question because questions sounded more intelligent than grief.<small>note left after writing to you</small></blockquote>
-        <div class="absence" role="img" aria-label="An intentionally empty image frame representing an undocumented absence">No photograph here. The absence is the evidence.</div>
-        <p>My writing about my father belongs here. His absence left me angry at what I did not receive and afraid of repeating it. I could turn that hurt into analysis before I let myself feel it. Writing “Dear Dad” and “What is a father?” did not resolve the wound. It made the wound visible.</p>
-        <p>Under the anger was grief. Under the grief was a wish to be known, guided, and chosen. I had to decide what kind of presence I would offer when the person who should have taught me presence chose not to be there.</p>
-        <p>Homer’s outlier is not that he made Achilles impossibly strong. It is that he let the strongest man become reachable. An enemy father enters his shelter. They grieve in the same room. For a moment, recognition does what force could not.</p>
-        <p>That was the first turn. Anger did not have to become my identity. It could become evidence. If I could admit the tenderness beneath it without despising myself, I could stop passing the absence forward.</p>
+        <p>The day before the mirror essay, on June 20, I published a letter called <a href="https://x.com/ChaiWithJai/status/2068425637585473763">“Dear Dad.”</a> The facts in it are plain. My father is alive and chooses not to be present. I was “the man of the house” at three years old. I learned to mute emotion before I was ten. At 34, I am now older than my father was when he had me. The letter ends with love anyway — for my mother, for what remains, and still for him.</p>
+        <p>The first Homer lecture on this shelf carries a catalog question: <strong>what assignment does Achilles receive?</strong> That question is why the Iliad sits closest to this chapter. Achilles’ anger is immense because his wound is immense, and near the poem’s end an enemy father asks him to remember his own father — and grief, for a moment, does what force could not. I am deliberately not quoting the lecture itself: the transcripts I hold are automatic captions, and I will not publish a line I have not checked against the video.</p>
+        <div class="absence" role="img" aria-label="An intentionally empty frame where no photograph exists">No photograph in this chapter. There is not one to show, and I will not stage one.</div>
+        <p>I would like to write that my anger became fuel. I do not get to write that. What writing the letter did was smaller: it made the wound visible, and it let me stop passing the absence forward without examining it first. Under the anger was grief. Under the grief was a wish to be known, guided, and chosen. Naming that is the entire progress this chapter can honestly report.</p>
       </div>
     </article>
 
@@ -628,26 +475,19 @@
         <p class="chapter__question">When did achievement become armor?</p>
       </header>
       <div class="chapter__body">
-        <p>In 2025 I had to admit that I could explain systems and help other people ship while failing to direct those skills toward my own life. I collected frameworks faster than I used them. I could build a complex system before proving that a simple one worked. I was better at designing a life than living one.</p>
-        <p>Ambition protected me too. As long as I was learning, building, or planning something impressive, I did not have to face the ordinary work I was avoiding. Philosophy could name an emotion before I felt it. A new tool could create motion without asking whether I was moving.</p>
-        <blockquote class="scrap scrap--left">I was better at designing a life than living one. That sentence hurt because it was useful.<small>the 2025 postmortem</small></blockquote>
+        <p>On February 4, 2026, I published the rawest thing I have written: <a href="https://x.com/ChaiWithJai/status/2019091227761602774">I asked an AI to tell me what is wrong with me</a>, and posted what came back. It called 2025 my worst year, and I agreed — while refusing to make it a pity party. It named the pattern: high-achiever, wannabe founder, thinkboi. New ideas felt like completed work. I collected frameworks instead of using them, and I used spirituality to bypass feelings I did not want to have. The line I keep from that post: the answer is usually in the work I am avoiding.</p>
         <figure class="evidence evidence--portrait">
-          <img src="/assets/founder-studio.jpg" width="720" height="1280" alt="A low-resolution vertical frame of Jai speaking into a microphone behind a laptop. The subtitle reads: I want to make something.">
-          <figcaption>I kept this frame because the sentence is smaller and more honest than the identity I tried to build around it: I want to make something.</figcaption>
+          <img src="/assets/founder-studio.jpg" width="720" height="1280" alt="A low-resolution vertical video frame of Jai speaking into a microphone behind a laptop. The subtitle reads: I want to make something.">
+          <figcaption><b>What this proves</b>A frame from a video I recorded, kept at its original low resolution. The subtitle is the sentence I actually said: “I want to make something.” It proves the wanting. It does not prove the making.</figcaption>
         </figure>
-        <figure class="evidence evidence--confession">
-          <img src="/assets/founder-ambition-confession.png" width="428" height="3785" alt="A long screenshot from an older personal page titled: I spent 67,000 dollars to become a productivity guru. Here's the one thing I learned: It's all a lie.">
-          <figcaption>An older page I built about the years I spent trying to systematize my way out of uncertainty. Even the confession became a landing page. That contradiction belongs here.</figcaption>
-        </figure>
-        <p>I called my review a strategic postmortem because I needed evidence, not another story about how smart or broken I was. Professor Jiang gave me a clearer test: <strong>mass × energy × coordination</strong>.</p>
-        <div class="formula" aria-label="Mass, energy, and coordination">
-          <div><b>Mass</b>What have I gathered?</div>
-          <div><b>Energy</b>What can I honestly bring?</div>
-          <div><b>Coordination</b>Whom does the work help move?</div>
-        </div>
-        <p>I already had mass: books, notes, code, skills, work experience, and people willing to help. I often mistook stored capacity for momentum. Energy meant the sleep, breath, health, grief, and meaning I could actually bring to that capacity. Coordination meant choosing what joined the book to the lesson, the lesson to a person, and the person to a next action.</p>
-        <p>Game theory made the final question impossible to avoid. Other people have goals, fears, beliefs, and choices of their own. Strategy is not arranging the world around my ambition. It is learning the situation well enough to create a move other people can enter.</p>
-        <p>Exceptionalism stopped meaning that I was privately special. It became a responsibility to develop what I have and direct it toward more than my own image.</p>
+        <p>Professor Jiang enters the story here, and I want to get him right, because an earlier version of this page got him wrong. On December 23, 2025, he published an essay called <a href="https://predictivehistory.substack.com/p/secret-history-28-onward-and-forward">“Secret History #28: Onward and Forward.”</a> He turns 50 in 2026. It was not a letter about turning 34, and this is not a story about two men turning 34 and finding the answer.</p>
+        <p>What the essay actually describes: at 30 he was in his parents’ basement — angry, depressed, without prospects. Four years of rise followed: two successful study-abroad programs, prominence in education reform, a path toward fame and fortune. Then he walked away, because he no longer believed in being a middleman between wealthy Chinese families and Western education brands. Walking away did not save him. He was poor again, depressed again; he drank; he wandered. What finally gave his talent structure was not a better system.</p>
+        <blockquote class="cited">
+          <p>“My wife has made many sacrifices to give me structure so that I may direct my talent for good.”</p>
+          <footer>Xueqin Jiang, “Onward and Forward,” December 23, 2025</footer>
+        </blockquote>
+        <p>What I took from him is narrower than destiny. The end of his four-year rise — the threshold he walked away at — came around the age I am now, questioning a life built from visible capacity and other people’s definitions of success. His essay is evidence that choosing truth over a life that no longer feels like yours is survivable, and that another collapse can come between the choice and the structure. That is not comfort. It is a map with the hard parts left in.</p>
+        <p>I am not going to close this chapter with a framework. Collecting them is the confessed problem four paragraphs up.</p>
       </div>
     </article>
 
@@ -655,32 +495,45 @@
       <header>
         <p class="chapter__number">Chapter III</p>
         <h2>Tenderness</h2>
-        <p class="chapter__question">What if care is the highest form of coordination?</p>
+        <p class="chapter__question">Who can use the gift — and who is being used by it?</p>
       </header>
       <div class="chapter__body">
-        <p>No ships. No city walls. Just an alarm, wet ground, a friend waiting, and the quality of attention I bring into a room. The ordinary day became the place where every large idea had to prove itself.</p>
-        <p>Tenderness is not the opposite of rigor. It is what makes rigor answerable to a human life. Once I saw the gap in myself, an idea had to change what I did with a morning, how I cared for my body, how I treated a friend, or what a student could do next. Knowledge had to return me to life with better judgment.</p>
-        <p>That is why teaching became central. At KVibe Studios, I kept the workshops small because I did not want to perform expertise at a room. I wanted each person to ask several questions and leave with a clearer next move. Care was part of the method. So were real costs, failed demos, and the limits of what AI could do. If I could not show the receipt, I did not want to make the claim.</p>
-        <p>I taught through <strong>means, motivation, and opportunity</strong>. Means asks what a person already has. Motivation asks what change they want enough to work for. Opportunity asks for the smallest useful result they can make now. The first win is small on purpose. It lets a person feel evidence, not just receive advice.</p>
-        <blockquote class="scrap">6:00 a.m. The alarm is not a philosophy. Alex is waiting. Bring the wraps. Bring a plan. Be there.<small>the park, before sunrise</small></blockquote>
-        <div class="absence" role="img" aria-label="An intentionally empty image frame for an undocumented early morning training session">6:04 a.m. No photograph. We were there to train.</div>
-        <p>I am training Alex for a fight on August 11. We meet at 6 a.m. in a local park. That detail belongs here because another person now feels the quality of how I direct myself. If I arrive tired or distracted, his session gets worse. Care requires preparation. Tenderness can look like wrapped hands, a plan, and being there before sunrise.</p>
+        <p>On January 19, 2026, I published a guide called <a href="https://x.com/ChaiWithJai/status/2013316014302285926">“How to Learn AI on the Job (Because There’s No Other Way).”</a> The confession inside it matters more than the advice: teaching is the love of my life. The guide exists because I broke production six times — six outages — and what survived them was not brilliance but postmortems, decision records, and workflows. I turned that into free learning material for friends, family, bartenders, baristas, the neighborhood. The goal was never tutorial performance. It was self-efficacy: a person leaving with evidence that they can do the next thing themselves.</p>
         <figure class="evidence evidence--portrait-left">
-          <img src="/assets/founder-breathwork.jpg" width="1200" height="2134" alt="A vertical phone image of Jai mid-sentence holding a pink model brain beside a hand-drawn board asking why meditation is so hard.">
-          <figcaption>A cheap model brain, a marker, a question somebody might actually ask. I began to trust teaching when it stopped requiring me to look impressive.</figcaption>
+          <img src="/assets/founder-breathwork.jpg" width="1200" height="2134" alt="A vertical phone photo of Jai mid-sentence, holding a pink model brain beside a whiteboard with a hand-drawn brain and the question: why is meditation so hard.">
+          <figcaption><b>What this proves</b>A cheap pink model brain and a whiteboard question — “Why is meditation so hard?” This is what my teaching actually looks like: handmade, unstaged. It proves the practice, not a polished stage.</figcaption>
         </figure>
-        <p>The park has changed for me too. It is where I train, notice where I live, and think without another screen in front of me. I wanted more time for imagination. I began to understand that imagination is not an escape from discipline. It depends on protected time, rest, health, and enough inner quiet to notice a future before it exists.</p>
-        <p>The Great Books hold these forces at human scale. Anger can reveal a wound or consume a world. Ambition can build a civilization or make another person into material. Tenderness can restore what power alone cannot.</p>
-        <p>I do not want this shelf to turn books into trophies or short summaries. I want each lecture to preserve Professor Jiang’s three questions and give the reader a place to continue. A question keeps the work open. It lets a person test an old argument against a current life.</p>
-        <p>This is what I mean when I call great books technologies of human possibility. Civilization becomes useful when inherited knowledge changes how I direct myself, how I meet another person, and what future we can coordinate together.</p>
+        <figure class="evidence evidence--portrait">
+          <img src="/assets/founder-classroom.jpg" width="1200" height="900" alt="An ordinary phone selfie: Jai smiling in the foreground of a classroom while students behind him wave, flash peace signs, and give thumbs up among laptops and water bottles.">
+          <figcaption><b>What this proves</b>A phone selfie from a classroom I taught in. It proves we were in the room together, and that the room was warm. It does not prove which lecture we covered that day, and I will not put words in these students’ mouths.</figcaption>
+        </figure>
+        <p>Here is everything I will say about the park, because it is everything I can verify. My friend Alex has a fight on August 11. I train him at 6 a.m. The same park is where I go to imagine — the one place I think without a screen in front of me. No weather, no dialogue, no scene: the fight has not happened yet, and there is no photograph.</p>
+        <div class="absence" role="img" aria-label="An intentionally empty frame for the park, where no photograph exists">The park: Alex, a fight on August 11, 6 a.m. Those are the facts, and this frame stays empty.</div>
+        <p>Tenderness, as far as I can currently prove it, is this: another person now feels the quality of how I direct myself. If I arrive unprepared, his session gets worse. That is a smaller claim than a philosophy of care. It is also checkable, which is the point.</p>
       </div>
     </article>
 
-    <aside class="gift">
-      <p class="gift__label">A small thing for the stranger who made it this far</p>
-      <blockquote>You do not have to become impressive to become useful.</blockquote>
-      <p>You can let the anger tell the truth without letting it choose the future. You can put the ambition down long enough to hear what it has been protecting. You can begin with one promise small enough to keep. Then keep it beside someone.</p>
-    </aside>
+    <section class="inventory" id="the-shelf">
+      <p class="chapter__number">The shelf itself</p>
+      <h2>Thirteen lectures, thirty&#8209;nine questions</h2>
+      <div class="inventory__body">
+        <p>The shelf preserves 25 of Professor Jiang’s recorded sessions: 13 Great Books lectures and 12 Dante seminar sessions. Each of the 13 lectures carries three catalog questions — 39 in total, preserved exactly as written. The 12 Dante seminars carry no cataloged questions, so the shelf does not invent any for them.</p>
+        <div class="questions" aria-label="Three of the thirty-nine catalog questions, preserved exactly">
+          <div><b>Homer and the Invention of the Human</b>What assignment does Achilles receive?</div>
+          <div><b>The Odyssey</b>How can a person live after war and trauma?</div>
+          <div><b>Dante in Paradise</b>Why must Beatrice replace Virgil as guide?</div>
+        </div>
+        <p>A question keeps the work open. It lets you test an old argument against a current life, which is the only use of a great book I trust. That is the entire design of this shelf: the lectures, their questions kept intact, and room for you to continue past both.</p>
+      </div>
+    </section>
+
+    <figure class="dream">
+      <img src="/assets/founder-arc-mirror.webp" width="1440" height="920" alt="An AI-generated image: a cracked mirror leaning on a park bench at dusk, hand wraps draped over its frame, an annotated book open beside it, three empty folding chairs, and a city skyline behind. A faint classical warrior appears in one shard of the mirror.">
+      <figcaption>
+        <span class="image-note">Imagined, and labeled</span>
+        <span>This image is AI-made. Nothing in it happened. It assembles the real objects of this page — a park, hand wraps, an annotated book, a mirror, empty chairs, a skyline — into the world they built in my head. It comes last on purpose: imagination follows contact. First the lived images, then this.</span>
+      </figcaption>
+    </figure>
 
     <section class="letter">
       <header>
@@ -688,18 +541,44 @@
         <h2>For Professor Jiang</h2>
       </header>
       <div class="letter__body">
-        <p><strong>Thank you.</strong> I remember your late December letter about turning 34 because it reached me when I needed to reorganize my life around imagination without giving up discipline or strategy. Your work gave me a standard for joining those things.</p>
-        <p>I am trying to become the kind of teacher who keeps learning in public and takes old knowledge seriously. I want to give that knowledge back in a form that helps another person move.</p>
-        <p>I am trying to build systems that give people more time to live. I am also testing whether my ideas remain useful during an ordinary morning, while caring for my body, while helping a friend, and while teaching a room of students.</p>
-        <p>I hope to share this shelf with you when you come to America, and especially New York. This project is my thank you.</p>
+        <p><strong>Thank you.</strong> Not for an answer — you did not hand me one. Your December essay showed a man who walked away from a successful life because it stopped being true, collapsed again, and was finally given structure by love and responsibility rather than by a better system. I needed to see that sequence from someone who survived it.</p>
+        <p>The thank-you is the shelf itself: your thirteen lectures with their thirty-nine questions kept exactly as you wrote them, and twelve Dante sessions kept without invented metadata. A guide succeeds when the student can continue after the guide leaves. I am trying to continue.</p>
+        <p>If your travels ever bring you to New York, there is a classroom and a park I would like to show you.</p>
+      </div>
+    </section>
+
+    <section class="stranger">
+      <header>
+        <p class="chapter__number">For whoever found this</p>
+        <h2>One small thing</h2>
+      </header>
+      <div class="stranger__body">
+        <p>If you read this far, I owe you something better than advice. Here is the one practice I actually use, from the mirror essay, quoted exactly:</p>
+        <p class="practice">“What is one thing I can do for myself today?”</p>
+        <p>Answer it once, small, today. That is the whole assignment.</p>
+        <p>I checked this story against the oldest template — separation, initiation, return. Separation I can document. Initiation is ongoing. Return is unproven. So this page ends without an arrival: the fight is on August 11, the questions are open, and the man in the mirror is still being answered.</p>
       </div>
     </section>
   </main>
 
   <footer class="sources">
-    <p>Sources and further reading</p>
-    <p><a href="https://x.com/ChaiWithJai/status/2019091227761602774">Raw reflections on 2025</a> · <a href="https://x.com/ChaiWithJai/status/2013316014302285926">How to learn AI on the job</a> · <a href="https://x.com/ChaiWithJai/status/2068545237769716091">What is a father?</a> · <a href="https://x.com/ChaiWithJai/status/2068425637585473763">Dear dad</a> · <a href="https://luma.com/wskcway5">JavaScript 101 workshop</a></p>
-    <p><a href="https://predictivehistory.substack.com">Predictive History</a> carried Professor Jiang’s work into this project. The public archive did not surface the exact late-December birthday letter, so this page does not present an unverified quotation from it.</p>
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://x.com/ChaiWithJai/status/2013316014302285926">“How to Learn AI on the Job (Because There’s No Other Way)”</a> — January 19, 2026</li>
+      <li><a href="https://x.com/ChaiWithJai/status/2019091227761602774">“i asked ai to tell me what’s wrong with me”</a> — February 4, 2026</li>
+      <li><a href="https://x.com/ChaiWithJai/status/2068425637585473763">“Dear Dad”</a> — June 20, 2026</li>
+      <li><a href="https://x.com/ChaiWithJai/status/2068545237769716091">“What is a father?”</a> — June 21, 2026</li>
+      <li><a href="https://predictivehistory.substack.com/p/secret-history-28-onward-and-forward">Xueqin Jiang, “Secret History #28: Onward and Forward”</a> — December 23, 2025. Read in full through a paid subscription; quoted here in one short excerpt. Public chronology cross-checked against <a href="https://www.sixthtone.com/news/1010535">Sixth Tone</a>, <a href="https://jiangxq.blogspot.com/2011/07/education-in-china-diplomat.html">his own account of Shenzhen Middle School</a>, and <a href="https://www.nybooks.com/online/2014/04/08/china-school-reform-jiang-xueqin/">The New York Review of Books</a>.</li>
+    </ul>
+    <div class="gaps">
+      <h3>Gaps, stated plainly</h3>
+      <ul>
+        <li>A year of my meeting notes stayed locked in an app I could not export from. Nothing on this page is derived from them, and nothing substitutes for them.</li>
+        <li>No photograph of the park, the training, or Alex exists here, and none was staged or generated to fill the space.</li>
+        <li>The lecture transcripts on this site are automatic captions. No lecture sentence is quoted anywhere on this page; the 39 catalog questions are the only lecture text reproduced, because they are the catalog’s own metadata.</li>
+        <li>The classroom photograph proves shared presence in a room. It is not attached to any specific lecture or any student’s words.</li>
+      </ul>
+    </div>
   </footer>
 </body>
 </html>
