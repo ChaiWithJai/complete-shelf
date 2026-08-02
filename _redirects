@@ -1,0 +1,2 @@
+/api/catalog /api/catalog.json 200
+/api/volumes/:id/transcript /api/transcripts/:id.json 200

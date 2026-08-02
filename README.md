@@ -1,77 +1,38 @@
-# The Complete Shelf
+# The Civilizational Shelf
 
-An original, interactive Three.js library of seven clothbound hardcovers. Browse the continuous shelf, pull a volume into a responsive detail view, orbit the binding, and drag through a small set of physically curved pages.
+An interactive Three.js reading companion to Predictive History's [Great Books playlist](https://www.youtube.com/playlist?list=PLREQ8S3NPaQs5tLAZSG163pHGKcwDowVA).
 
-[**View the live experience**](https://mengto.github.io/complete-shelf/) · [**Read the build prompt**](PROMPT.md)
+**Live:** [literature.dharmicdata.org](https://literature.dharmicdata.org)
 
-![The Complete Shelf with seven clothbound volumes](assets/complete-shelf-preview.jpg)
+The original Complete Shelf interaction now presents ten editorial volumes spanning all 13 lectures. The four Dante lectures are bound together as a special ninth volume; its final spread reveals the separate 12-part Beijing Dante seminar.
 
-The collection is organized around seven tools for modern creative work:
+## What is included
 
-1. Codex
-2. Claude Code
-3. Cursor
-4. Antigravity
-5. Figma
-6. Framer
-7. Xcode
+- Canonical playlist-linked metadata for all 13 Great Books lectures.
+- A public, versioned content API at `/api/catalog`.
+- Searchable transcript JSON and plain-text editions for all 13 Great Books videos and all 12 Dante seminar videos.
+- Four or more editorial timestamps for every Great Books lecture, linked to the correct moment inside the canonical playlist.
+- A content-first model that separates lectures, shelf volumes, and special collections so the catalog can evolve without rewriting the 3D system.
+- Netlify deployment and headers configured for `literature.dharmicdata.org`.
 
-## What is inside
+Transcripts are derived from YouTube's English automatic captions and are labeled accordingly. Names, quotations, and non-English words should be checked against the video before formal citation.
 
-- A continuous seven-volume shelf navigated with the wheel, arrow keys, buttons, or position markers.
-- Detailed hardcover construction with separate boards, spine, hinges, endpapers, page block, headbands, bookmark, foil, and contact shadows.
-- Responsive inspection mode with orbit, pan, zoom, hover-to-crack-open, click-to-open, and drag-to-turn page interactions.
-- Book-specific color systems that recolor the scene and editorial detail layout.
-- Procedural cloth, foil, paper, page-edge, wood, roughness, normal, and shadow textures.
-- Deterministic shelf-to-detail transitions with exact endpoints so reparenting the selected volume never produces a last-frame jump.
-- Accessible HTML controls and status announcements layered over the WebGL scene.
+## Content management
 
-## How it is made
+Edit [`content/catalog.source.json`](content/catalog.source.json) to manage the public catalog. A build validates the source captions and produces:
 
-The entire experience lives in [`index.html`](index.html): markup, responsive layout, shaders and materials, book geometry, interaction state, animation, and embedded image atlases. There is no framework, bundler, backend, analytics layer, Mint dependency, or MCP call in the browser.
+- `/api/catalog.json` — the complete catalog
+- `/api/transcripts/:id.json` — timestamped transcript paragraphs
+- `/transcripts/:id.txt` — readable transcript edition
 
-The render stack uses [Three.js](https://threejs.org/) with physically based materials and `OrbitControls`. Cover and wood artwork are stored as embedded WebP atlases; supporting surface detail is generated at runtime with canvas textures. Each book is assembled from reusable geometry, while the front cover and pages use hinged groups and segmented meshes for curved page-turn motion.
+See [`docs/content-api.md`](docs/content-api.md) for the schema and endpoint contract.
 
-Interaction is managed as a small state machine:
-
-```text
-shelf -> opening detail -> closed inspection -> open book -> closing -> shelf
-```
-
-Camera, book, shelf, and view-offset transforms share deterministic eased timelines. This keeps the animation continuous when a book moves between the shelf and inspection scene graphs.
-
-## Build or remix it with an agent
-
-Start from [`PROMPT.md`](PROMPT.md), attach a visual reference if you have one, and ask your preferred coding agent to work directly in `index.html`.
-
-- [**Codex**](https://openai.com/codex/get-started/) — work in the repository, run the local site, inspect interactions, and iterate against browser proof.
-- [**Cursor**](https://www.cursor.com/) — open the folder, give Agent the prompt, and review changes in the editor.
-- [**Claude Code**](https://claude.com/product/claude-code) — run Claude in the project directory and point it at the prompt and HTML file.
-- [**Aura Build**](https://aura.build) — use the prompt and screenshots as a starting point for a visual build or remix.
-
-Whichever tool you use, the useful loop is the same: make one focused change, run the page, verify the real interaction, inspect the console, and keep only the revision that improves the experience.
-
-## Run locally
-
-The page uses JavaScript modules, so serve it over HTTP instead of opening it directly from disk:
+## Build and verify
 
 ```bash
-python3 -m http.server 4173
+npm test
 ```
 
-Then visit [http://localhost:4173](http://localhost:4173).
+This produces `dist/`, verifies the canonical playlist ID, checks the 10-volume/13-lecture/12-seminar structure, confirms every Great Books lecture has helpful timestamps, and verifies all 25 transcripts.
 
-No install or build step is required. An internet connection is needed for the pinned Three.js modules and Inter font.
-
-## Project structure
-
-```text
-complete-shelf/
-├── index.html   # Complete production experience
-├── PROMPT.md    # Portable recreation and remix brief
-└── README.md    # Project overview and implementation notes
-```
-
-## Design notes
-
-The visual direction studies the clarity, material craft, and book photography of contemporary editorial publishers, including [Stripe Press](https://press.stripe.com/), while using original book titles, cover artwork, textures, layouts, and interaction design. This project is independent and is not affiliated with Stripe Press or the products represented by the seven volumes.
+The browser experience remains self-contained in [`index.html`](index.html), with the catalog loaded from the generated API at startup.
