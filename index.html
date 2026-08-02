@@ -1284,6 +1284,102 @@
       line-height: 1.45;
     }
 
+    .founder-arc__portrait {
+      position: relative;
+      width: min(100%, 760px);
+      margin: 46px 0 6px;
+      transform: rotate(-0.35deg);
+    }
+
+    .founder-arc__spine {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      max-width: 42rem;
+      margin-top: 34px;
+      border-block: 1px solid color-mix(in srgb, var(--gold) 36%, transparent);
+    }
+
+    .founder-arc__spine span {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 13px 0;
+      color: var(--paper-pale);
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+    }
+
+    .founder-arc__spine i {
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      font-style: normal;
+      letter-spacing: 0.1em;
+    }
+
+    .founder-arc__portrait::before {
+      position: absolute;
+      inset: -1px;
+      z-index: 1;
+      border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+      content: "";
+      pointer-events: none;
+    }
+
+    .founder-arc__portrait img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: saturate(0.78) contrast(1.04);
+    }
+
+    .founder-arc__portrait figcaption {
+      display: grid;
+      grid-template-columns: 9rem 1fr;
+      gap: 18px;
+      margin-top: 15px;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .founder-arc__portrait figcaption b {
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .founder-arc__portrait figcaption span {
+      max-width: 35rem;
+    }
+
+    .founder-arc__threshold {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 16px 0 4px;
+      color: color-mix(in srgb, var(--gold) 80%, var(--ink-soft));
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .founder-arc__threshold::before,
+    .founder-arc__threshold::after {
+      height: 1px;
+      background: color-mix(in srgb, var(--gold) 36%, transparent);
+      content: "";
+    }
+
+    .founder-arc__threshold::before { width: 28px; }
+    .founder-arc__threshold::after { flex: 1; }
+
     .founder-arc__body {
       display: grid;
       gap: 20px;
@@ -1360,6 +1456,11 @@
       .founder-arc { padding: 86px 22px 48px; }
       .founder-arc__close { top: -54px; }
       .founder-arc h2 { font-size: clamp(2.9rem, 15vw, 4.5rem); }
+      .founder-arc__spine { grid-template-columns: 1fr; gap: 0; }
+      .founder-arc__spine span { padding: 8px 0; }
+      .founder-arc__spine span + span { border-top: 1px solid color-mix(in srgb, var(--gold) 20%, transparent); }
+      .founder-arc__portrait { margin-top: 34px; transform: none; }
+      .founder-arc__portrait figcaption { grid-template-columns: 1fr; gap: 5px; }
       .founder-arc__body { margin-top: 32px; font-size: 0.98rem; }
       .founder-arc__principles { grid-template-columns: 1fr; }
       .founder-arc__principles div { min-height: auto; }
@@ -2313,35 +2414,49 @@
         <p class="founder-arc__kicker">A note from the maker · 2026</p>
         <h2 id="founder-arc-title">What am I trying to become?</h2>
         <p class="founder-arc__lede">The question behind this project is simple. What kind of teacher can I become if I stop using knowledge to avoid my life and start using it to organize my life?</p>
+        <div class="founder-arc__spine" aria-label="Three chapters: anger, ambition, and tenderness">
+          <span><i>I</i> Anger</span>
+          <span><i>II</i> Ambition</span>
+          <span><i>III</i> Tenderness</span>
+        </div>
+        <figure class="founder-arc__portrait">
+          <img src="/assets/founder-arc-mirror.webp" width="1440" height="920" alt="At dawn in a wet city park, worn boxing wraps hang from a cracked mirror beside an annotated book and three empty student chairs. A faint classical warrior appears in one shard while an ordinary man appears in another.">
+          <figcaption>
+            <b>The mirror · the book · the body</b>
+            <span>Students said the Iliad lecture felt like a mirror. Achilles does that: beneath the glory, he makes us face what anger protects, what pride costs, and how little time a human life contains. This is the mirror I found waiting for me.</span>
+          </figcaption>
+        </figure>
         <div class="founder-arc__body">
-          <h3>The part I could explain but could not live</h3>
-          <p>In 2025 I had to admit that I could explain systems and help other people ship while still failing to direct those skills toward my own life. I could also collect frameworks faster than I could use them. I was better at designing a life than living one. I called the review a strategic postmortem because I needed to look at the evidence without turning it into a story about how smart or broken I was.</p>
-          <p>The evidence showed an execution gap. I could build a complex system before I had proved that a simple one worked. I could use philosophy to explain an emotion before I had felt it. I could collect another framework when the answer was already inside the work I did not want to do.</p>
-          <p>My writing about my father belongs here. His absence forced me to face a question that no tool could answer for me. I had to decide what kind of presence I wanted to offer other people when the person who should have helped me learn that chose not to be there. Writing "Dear Dad" and "What is a father?" did not solve that hurt. It stopped me from hiding it inside a cleaner subject.</p>
+          <p class="founder-arc__threshold" aria-hidden="true">Chapter I</p>
+          <h3>Anger: what was it protecting?</h3>
+          <p>Achilles first gave me a language for the force I knew but did not know how to hold. His anger is immense because his wound is immense. He can bend a war around his refusal, yet he cannot make himself invulnerable to grief. When students said the Iliad lecture felt like a mirror, I understood why. The poem does not ask us to admire anger from a safe distance. It asks what our anger is protecting, whom it punishes, and what it costs while we call it strength.</p>
+          <p>My writing about my father belongs in this chapter. His absence left me angry at what I did not receive and afraid of repeating it. I could turn that hurt into analysis before I let myself feel it. Writing “Dear Dad” and “What is a father?” did not resolve the wound. It made the wound visible. It forced me to ask what kind of presence I would offer when the person who should have taught me presence chose not to be there.</p>
+          <p>That was the first turn: anger did not have to become my identity. It could become evidence. Under it was grief. Under the grief was a wish to be known, guided, and chosen. If I could admit that tenderness without despising it, I could stop passing the absence forward.</p>
 
-          <h3>The question had to become daily</h3>
-          <p>Once I saw the gap, I needed a smaller test. An idea had to change what I did with a morning, how I cared for my body, how I treated a friend, or what a student could do next. Knowledge had to return me to life with better judgment.</p>
-          <p>That is why teaching became central. At KVibe Studios, I kept the workshops small because I did not want to perform expertise at a room. I wanted each person to ask several questions and leave with a clearer next move. Care was part of the method. So were real costs, failed demos, and the limits of what AI could do. If I could not show the receipt, I did not want to make the claim.</p>
-          <p>I taught through <strong>means, motivation, and opportunity</strong>. Means asks what a person already has. Motivation asks what change they want enough to work for. Opportunity asks for the smallest useful result they can make now. The first win is small on purpose. It gives a person evidence that they can move.</p>
-          <p>I am also training Alex for a fight on August 11. We meet at 6 a.m. in a local park. That detail belongs in this story because another person now feels the quality of how I direct myself. If I arrive tired or distracted, the session gets worse. Care requires preparation.</p>
-          <p>The park has also changed for me. It is a place where I can train, notice where I live, and think without another screen in front of me. I wanted more time for imagination. I began to understand that imagination depends on protected time, rest, and health.</p>
-
-          <h3>Mass is not momentum</h3>
-          <p>Professor Jiang gave me a way to name the next part. I keep returning to <strong>mass × energy × coordination</strong>. I already had mass. I had books, notes, code, tools, work experience, and people willing to help. I often mistook that stored capacity for progress.</p>
-          <p>Energy is what I can bring to the material. Sleep affects it. Breath affects it. Grief affects it. Meaning affects it. Energy can also disappear inside work that looks productive but does not change anything.</p>
-          <p>Coordination is the difficult part. It is the choice that connects the book to the lesson, the lesson to the workshop, the workshop to a person, and the person to a next action. In my own life it can be as plain as going to bed, waking at 6, bringing a plan to the park, and keeping a promise to a friend.</p>
-          <p>Game theory keeps this from becoming a private formula for improving myself. Other people want different things and act on beliefs I may not share. A teacher changes the situation when the first step becomes easier to see and safer to take. A builder changes it when people can coordinate around something that works. Strategy means understanding those choices instead of assuming everyone wants what I want.</p>
+          <p class="founder-arc__threshold" aria-hidden="true">Chapter II</p>
+          <h3>Ambition: when achievement became armor</h3>
+          <p>In 2025 I had to admit that I could explain systems and help other people ship while failing to direct those skills toward my own life. I collected frameworks faster than I used them. I could build a complex system before proving that a simple one worked. I was better at designing a life than living one.</p>
+          <p>Ambition protected me too. As long as I was learning, building, or planning something impressive, I did not have to face the ordinary work I was avoiding. Philosophy could name an emotion before I felt it. A new tool could create motion without asking whether I was moving. I called my review a strategic postmortem because I needed evidence, not another story about how smart or broken I was.</p>
+          <p>Professor Jiang gave me a clearer test: <strong>mass × energy × coordination</strong>. I already had mass—books, notes, code, skills, work experience, and people willing to help. I often mistook stored capacity for momentum. Energy meant the sleep, breath, health, grief, and meaning I could actually bring to that capacity. Coordination meant choosing what joined the book to the lesson, the lesson to a person, and the person to a next action.</p>
           <div class="founder-arc__principles" aria-label="The principles carried into this project">
-            <div><b>Mass</b>Store capacity in books, skills, tools, experience, and relationships.</div>
-            <div><b>Energy</b>Protect the attention and health needed to direct that capacity.</div>
-            <div><b>Coordination</b>Make choices and agreements that turn capacity into shared action.</div>
+            <div><b>Mass</b>What have I gathered?</div>
+            <div><b>Energy</b>What can I honestly bring?</div>
+            <div><b>Coordination</b>Whom does the work help move?</div>
           </div>
+          <p>Game theory made the final question impossible to avoid. Other people have goals, fears, beliefs, and choices of their own. Strategy is not arranging the world around my ambition. It is learning the situation well enough to create a move other people can enter. Exceptionalism stopped meaning that I was privately special. It became a responsibility to develop what I have and direct it toward more than my own image.</p>
+
+          <p class="founder-arc__threshold" aria-hidden="true">Chapter III</p>
+          <h3>Tenderness: the discipline of staying</h3>
+          <p>Tenderness is not the opposite of rigor. It is what makes rigor answerable to a human life. Once I saw the gap in myself, an idea had to change what I did with a morning, how I cared for my body, how I treated a friend, or what a student could do next. Knowledge had to return me to life with better judgment.</p>
+          <p>That is why teaching became central. At KVibe Studios, I kept the workshops small because I did not want to perform expertise at a room. I wanted each person to ask several questions and leave with a clearer next move. Care was part of the method. So were real costs, failed demos, and the limits of what AI could do. If I could not show the receipt, I did not want to make the claim.</p>
+          <p>I taught through <strong>means, motivation, and opportunity</strong>. Means asks what a person already has. Motivation asks what change they want enough to work for. Opportunity asks for the smallest useful result they can make now. The first win is small on purpose. It lets a person feel evidence, not just receive advice.</p>
+          <p>I am training Alex for a fight on August 11. We meet at 6 a.m. in a local park. That detail belongs in this story because another person now feels the quality of how I direct myself. If I arrive tired or distracted, his session gets worse. Care requires preparation. Tenderness can look like wrapped hands, a plan, and being there before sunrise.</p>
+          <p>The park has changed for me too. It is where I can train, notice where I live, and think without another screen in front of me. I wanted more time for imagination. I began to understand that imagination is not an escape from discipline. It depends on protected time, rest, health, and enough inner quiet to notice a future before it exists.</p>
 
           <h3>Why civilization, and why a shelf?</h3>
-          <p>During a personal crisis, I can lose sight of any time beyond the immediate problem. The Great Books remind me that people have faced the same human problems under different conditions. They asked what freedom requires and what love asks of us. They also asked how power changes a person and what one generation owes the next.</p>
+          <p>The Great Books hold these three forces at human scale. Anger can reveal a wound or consume a world. Ambition can build a civilization or make another person into material. Tenderness can restore what power alone cannot. The books do not make those choices for us. They let us see the choices before we repeat them.</p>
           <p>I do not want the shelf to turn those books into trophies or short summaries. I want each lecture to preserve Professor Jiang's three questions and give the reader a place to continue. A question keeps the work open. It lets a person test an old argument against a current life.</p>
-          <p>This is what I mean when I call great books technologies of human possibility. They hold attempts to answer problems that each generation faces. I can study those attempts and see where they failed. I can then use that knowledge to make a better choice now. Civilization becomes useful when it changes how I direct myself and what I can help other people do.</p>
-          <p>Exceptionalism now means responsibility to me. It is not a private belief that I am special. It is the duty to develop what I have, direct it well, and make work that serves more than my own image.</p>
+          <p>This is what I mean when I call great books technologies of human possibility. Civilization becomes useful when inherited knowledge changes how I direct myself, how I meet another person, and what future we can coordinate together.</p>
 
           <h3>For Professor Jiang</h3>
           <p><strong>Thank you.</strong> I remember your late December letter about turning 34 because it reached me when I needed to reorganize my life around imagination without giving up discipline or strategy. Your work gave me a standard for joining those things.</p>
