@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c111c">
-  <meta name="robots" content="noindex">
-  <meta name="description" content="This page was retracted. It will return when the story can be told from verified sources.">
-  <title>Retracted — The Civilizational Shelf</title>
+  <meta name="description" content="Anger, ambition, tenderness: why I built The Civilizational Shelf, and a thank-you letter to Professor Jiang.">
+  <title>Anger, Ambition, Tenderness — why I built this shelf</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
       --night: #0c111c;
+      --night-soft: #141b2a;
       --paper: #f1eadf;
       --ink: #c9c4bd;
       --quiet: #8e929a;
@@ -23,91 +26,512 @@
 
     * { box-sizing: border-box; }
 
-    body {
-      display: grid;
-      place-items: center;
-      min-height: 100svh;
-      margin: 0;
+    html {
       background: var(--night);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 0;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(53, 72, 111, 0.24), transparent 38rem),
+        var(--night);
       color: var(--paper);
       font-family: var(--serif);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    main {
-      width: min(38rem, calc(100% - 48px));
-      padding: 48px 0;
-    }
+    a { color: inherit; }
 
-    .kicker {
-      margin: 0 0 20px;
-      color: var(--gold);
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0 0 28px;
-      font-size: clamp(2.4rem, 7vw, 3.6rem);
-      font-weight: 400;
-      letter-spacing: -0.045em;
-      line-height: 1;
-    }
-
-    p {
-      margin: 0 0 1.3em;
-      color: var(--ink);
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    a { color: var(--paper); }
-
-    .return {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 10px 16px;
-      border: 1px solid var(--rule);
-      color: var(--ink);
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: min(1080px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--rule);
       font-family: var(--sans);
       font-size: 0.62rem;
       letter-spacing: 0.14em;
-      text-decoration: none;
       text-transform: uppercase;
     }
 
-    .return::before {
+    .masthead a { text-decoration: none; }
+    .masthead__return { color: var(--ink); }
+
+    .masthead__return::before {
       margin-right: 8px;
       content: "←";
     }
 
-    .return:hover,
-    .return:focus-visible {
-      border-color: var(--ink);
-      color: var(--paper);
+    .hero,
+    .chapter,
+    .shelf-why,
+    .letter,
+    .close,
+    .sources {
+      width: min(1080px, calc(100% - 44px));
+      margin-inline: auto;
     }
 
-    .note {
+    .hero {
+      max-width: 47rem;
+      padding: clamp(70px, 11vw, 140px) 0 clamp(60px, 9vw, 110px);
+    }
+
+    .eyebrow,
+    .chapter__number,
+    .image-note,
+    .spine span small {
+      font-family: var(--sans);
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.9rem, 7.4vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.95;
+    }
+
+    .hero__body {
+      margin-top: 40px;
+      color: var(--ink);
+      font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+      line-height: 1.72;
+    }
+
+    .hero__body p { margin: 0 0 1.35em; }
+    .hero__body strong { color: var(--paper); font-weight: 400; }
+    .hero__body em { color: var(--gold); font-style: normal; }
+
+    .spine {
+      display: grid;
+      gap: 1px;
+      margin-top: 46px;
+      border-block: 1px solid var(--rule);
+    }
+
+    .spine span {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 0;
+      color: var(--paper);
+      font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    }
+
+    .spine span + span { border-top: 1px solid var(--rule); }
+    .spine span small { color: var(--gold); }
+
+    .chapter {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1fr);
+      gap: clamp(50px, 9vw, 130px);
+      padding: clamp(80px, 11vw, 150px) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .chapter__number {
+      margin: 0 0 16px;
+      color: var(--gold);
+    }
+
+    .chapter h2,
+    .shelf-why h2,
+    .letter h2,
+    .close h2 {
+      max-width: 10ch;
+      margin: 0;
+      font-size: clamp(2.7rem, 6.2vw, 5.4rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.9;
+    }
+
+    .chapter__question {
+      max-width: 24rem;
+      margin: 27px 0 0;
+      color: var(--ink);
+      font-size: 1.14rem;
+      line-height: 1.5;
+    }
+
+    .chapter__body,
+    .shelf-why__body,
+    .letter__body,
+    .close__body {
+      max-width: 42rem;
+      color: var(--ink);
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      line-height: 1.74;
+    }
+
+    .chapter__body p,
+    .shelf-why__body p,
+    .letter__body p,
+    .close__body p { margin: 0 0 1.35em; }
+
+    .chapter__body p:last-child,
+    .shelf-why__body p:last-child,
+    .letter__body p:last-child,
+    .close__body p:last-child { margin-bottom: 0; }
+
+    .chapter__body strong,
+    .shelf-why__body strong,
+    .letter__body strong,
+    .close__body strong { color: var(--paper); font-weight: 400; }
+
+    .cited {
+      margin: 40px 0;
+      padding-left: 22px;
+      border-left: 2px solid var(--gold);
+      color: var(--paper);
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      line-height: 1.42;
+    }
+
+    .cited p { margin: 0; }
+
+    .cited footer {
+      margin-top: 12px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .frames {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin: 42px 0;
+      border: 1px solid var(--rule);
+      background: var(--rule);
+    }
+
+    .frames div {
+      min-height: 130px;
+      padding: 18px;
+      background: var(--night-soft);
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+
+    .frames b {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--paper);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .evidence {
+      margin: 50px 0 44px;
+    }
+
+    .evidence img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--rule);
+      filter: saturate(0.88) contrast(1.02);
+    }
+
+    .evidence figcaption {
+      max-width: 32rem;
+      margin-top: 12px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+    }
+
+    .evidence--portrait {
+      width: min(72%, 380px);
+      margin-left: auto;
+    }
+
+    .evidence--portrait-left {
+      width: min(72%, 380px);
+    }
+
+    .shelf-why {
+      padding: clamp(80px, 11vw, 150px) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .shelf-why__body { margin-top: 42px; }
+
+    .dream {
+      width: min(1080px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: clamp(70px, 10vw, 130px) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .dream img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(203, 178, 116, 0.36);
+      filter: saturate(0.74) contrast(1.05);
+    }
+
+    .dream figcaption {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: 22px;
+      max-width: 52rem;
+      margin-top: 14px;
+      color: var(--quiet);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      line-height: 1.65;
+    }
+
+    .image-note { color: var(--gold); }
+
+    .letter,
+    .close {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1fr);
+      gap: clamp(50px, 9vw, 130px);
+      padding: clamp(80px, 12vw, 160px) 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .letter__body .signoff {
       margin-top: 34px;
-      padding-top: 22px;
+      color: var(--paper);
+      font-size: 1.2rem;
+    }
+
+    .practice {
+      margin: 36px 0;
+      color: var(--paper);
+      font-size: clamp(1.6rem, 3.8vw, 2.7rem);
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    .sources {
+      padding: 40px 0 72px;
       border-top: 1px solid var(--rule);
       color: var(--quiet);
       font-family: var(--sans);
-      font-size: 0.76rem;
-      line-height: 1.7;
+      font-size: 0.78rem;
+      line-height: 1.85;
+    }
+
+    .sources h3 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .sources p, .sources ul { max-width: 60rem; margin: 0 0 10px; }
+    .sources ul { padding-left: 18px; }
+    .sources li { margin-bottom: 4px; }
+    .sources a { color: var(--ink); }
+
+    @media (max-width: 760px) {
+      .masthead { padding-block: 19px; }
+      .masthead span { display: none; }
+
+      h1 { font-size: clamp(2.6rem, 12vw, 4rem); }
+
+      .chapter,
+      .letter,
+      .close {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .chapter h2,
+      .shelf-why h2,
+      .letter h2,
+      .close h2 { max-width: 12ch; }
+      .chapter__question { max-width: 30rem; }
+
+      .frames { grid-template-columns: 1fr; }
+      .frames div { min-height: auto; }
+      .evidence--portrait,
+      .evidence--portrait-left { width: calc(100% - 12px); }
+      .dream figcaption { grid-template-columns: 1fr; gap: 5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
+  <header class="masthead">
+    <a class="masthead__return" href="/">Return to the shelf</a>
+    <span>A note from the maker · New York · 2026</span>
+  </header>
+
   <main>
-    <p class="kicker">The Civilizational Shelf</p>
-    <h1>This page was retracted.</h1>
-    <p>The essay that lived here did not meet the standard it was held to: every claim verified, every image proving something, no invented detail. It has been taken down rather than polished.</p>
-    <p>A new page will exist when the story can be told honestly, from sources. Until then there is no story here — and that absence is the true state of the work.</p>
-    <a class="return" href="/">Return to the shelf</a>
-    <p class="note">The standard, and the ledger for the rebuild, are public: <a href="https://github.com/ChaiWithJai/complete-shelf/issues/9">issue&nbsp;#9</a>.</p>
+    <section class="hero">
+      <p class="eyebrow">Why I built this shelf</p>
+      <h1>Anger, ambition, tenderness</h1>
+      <div class="hero__body">
+        <p>Last June I wrote two essays in two days. The first was a letter to my father. The second was my attempt to answer the question that letter left me holding: <a href="https://x.com/ChaiWithJai/status/2068545237769716091">what is a father?</a> I got as far as protection, guidance, unconditional love — and then the part I did not see coming. The person who has to provide those things for me now is the man in the mirror.</p>
+        <p>I ended that essay with a practice I still use: <em>“What is one thing I can do for myself today?”</em></p>
+        <p>This shelf is what happened when I kept answering that question for a year. Three forces kept showing up in the answers — anger, ambition, tenderness — and one teacher kept showing up in the middle of all three. This page is the story, and at the end of it, the thank-you letter I owe him.</p>
+      </div>
+      <nav class="spine" aria-label="The three chapters">
+        <span>Anger <small>I</small></span>
+        <span>Ambition <small>II</small></span>
+        <span>Tenderness <small>III</small></span>
+      </nav>
+    </section>
+
+    <article class="chapter" id="anger">
+      <header>
+        <p class="chapter__number">Chapter I</p>
+        <h2>Anger</h2>
+        <p class="chapter__question">What was it protecting?</p>
+      </header>
+      <div class="chapter__body">
+        <p>The facts from the letter, plainly. My father is alive and chooses not to be present. I was the man of the house at three years old. I learned to mute my emotions before I was ten. At 34, I am now older than he was when I was born. And the ending that surprised me while I wrote it: I still love him. I love my mother, I love what remains, and I still love him.</p>
+        <p>For most of my life I did not call any of that anger. I called it drive. It looked like drive. It got promotions.</p>
+        <p>Then I sat with Professor Jiang’s lecture on the Iliad. His catalog question for it is one sentence: <strong>what assignment does Achilles receive?</strong> Achilles’ anger is enormous because his wound is enormous. He can bend an entire war around his refusal, and he still cannot protect himself from grief. Near the end of the poem an enemy father kneels in his tent and asks him to remember his own father — and grief does, in one night, what force could not do in ten years of war.</p>
+        <p>That lecture is why I can tell you what my anger was protecting. Grief. And under the grief, a wish so simple it embarrasses me to type it: to be known, guided, and chosen. The Iliad did not fix that. It gave the wound a language, and it gave me somewhere to put the weight that was not another person’s shoulders.</p>
+      </div>
+    </article>
+
+    <article class="chapter" id="ambition">
+      <header>
+        <p class="chapter__number">Chapter II</p>
+        <h2>Ambition</h2>
+        <p class="chapter__question">When did achievement become armor?</p>
+      </header>
+      <div class="chapter__body">
+        <p>In February I published the rawest thing I have ever written: <a href="https://x.com/ChaiWithJai/status/2019091227761602774">I asked an AI to tell me what is wrong with me</a>, and I posted the answer. 2025 was the worst year of my life — and no, it is not a pity party. The machine’s read on my pattern was rude and correct: high-achiever, wannabe founder, thinkboi. New ideas felt like completed work. I collected frameworks the way some people collect supplements. I used spirituality to bypass feelings I did not want to feel. And the answer was always in the one place I refused to look: the work I was avoiding.</p>
+        <p>That is the shape ambition took in me. Armor. As long as I was learning something impressive, I never had to ship something small.</p>
+        <figure class="evidence evidence--portrait">
+          <img src="/assets/founder-studio.jpg" width="720" height="1280" alt="A low-resolution vertical video frame of Jai speaking into a microphone behind a laptop. The subtitle reads: I want to make something.">
+          <figcaption>A frame from a video I recorded, kept at its original bad resolution. The subtitle is the whole confession: “I want to make something.” Wanting was never my problem.</figcaption>
+        </figure>
+        <p>Then, in late December, at the bottom of that year, Professor Jiang published a letter on his Substack called <a href="https://predictivehistory.substack.com/p/secret-history-28-onward-and-forward">“Onward and Forward.”</a> He tells the story of being thirty in his parents’ basement — angry, depressed, no prospects. Then four years of rise: two successful study-abroad programs, real prominence in education reform, a straight road to fame and fortune. And at the end of that rise — right around the age I am now — he walked away from all of it, because he no longer believed in what he was selling. The walk-away did not save him. He was poor again, depressed again; he drank; he wandered. What finally gave his talent a shape was not a better system. He says it in one line I have not stopped thinking about since December:</p>
+        <blockquote class="cited">
+          <p>“My wife has made many sacrifices to give me structure so that I may direct my talent for good.”</p>
+          <footer>Xueqin Jiang, “Onward and Forward,” December 2025</footer>
+        </blockquote>
+        <p>Love and responsibility did what optimization could not. Reading that at the bottom of my worst year reorganized it. If the fall comes after choosing what is true, the fall is survivable. That is what I needed a grown man to show me, and no framework ever had.</p>
+        <p>Three things I took from Professor Jiang now run through everything on this site.</p>
+        <div class="frames" aria-label="Three things taken from Professor Jiang">
+          <div><b>Mass × energy × coordination</b>Mass is what you have gathered. Energy is what you can honestly bring. Coordination is the multiplier that was missing from my life.</div>
+          <div><b>Game theory</b>Other people have goals, fears, and moves of their own. Strategy is reading the situation well enough to make a move others can enter.</div>
+          <div><b>Exceptionalism</b>Not “I am special.” A responsibility: I was given real capacity, so develop it and point it at something bigger than my own reflection.</div>
+        </div>
+        <p>Here is what those meant when I finally used them on myself instead of putting them in a slide. I had mass — books, code, notes, skills, people willing to help — and I kept mistaking stored capacity for momentum. My energy was garbage: bad sleep, unprocessed grief, attention shredded by proving myself. And I had almost no coordination: nothing connected the book to the lesson, the lesson to a person, the person to a next step. So the work of this year was not another framework. It was raising the energy, and building the coordination. This shelf is one of the results.</p>
+      </div>
+    </article>
+
+    <article class="chapter" id="tenderness">
+      <header>
+        <p class="chapter__number">Chapter III</p>
+        <h2>Tenderness</h2>
+        <p class="chapter__question">What is strength for?</p>
+      </header>
+      <div class="chapter__body">
+        <p>Teaching is the love of my life. I learned AI <a href="https://x.com/ChaiWithJai/status/2013316014302285926">the only way you actually can — on the job</a>, by breaking things. Six production outages. What survived them was not brilliance; it was postmortems, decision records, and workflows. So in January I turned all of it into a free guide, because the bartenders, baristas, friends, and family in my neighborhood deserve the same on-ramp the engineers got.</p>
+        <p>The workshops grew out of that, and I kept them small on purpose. I was not really teaching tools. I was teaching people to think in <strong>means, motivation, and opportunity</strong> — the other lens I carried out of Professor Jiang’s work. Means: what do you already have? Motivation: what change do you want badly enough to work for? Opportunity: what is the smallest useful thing you can make right now? The first win is small on purpose. Advice bounces off people. Evidence does not.</p>
+        <figure class="evidence evidence--portrait-left">
+          <img src="/assets/founder-breathwork.jpg" width="1200" height="2134" alt="A vertical phone photo of Jai mid-sentence, holding a pink model brain beside a whiteboard with a hand-drawn brain and the question: why is meditation so hard.">
+          <figcaption>A cheap pink model brain and a whiteboard question somebody might actually ask. My teaching started working when it stopped needing to look impressive.</figcaption>
+        </figure>
+        <figure class="evidence evidence--portrait">
+          <img src="/assets/founder-classroom.jpg" width="1200" height="900" alt="An ordinary phone selfie: Jai smiling in the foreground of a classroom while students behind him wave, flash peace signs, and give thumbs up among laptops and water bottles.">
+          <figcaption>A phone selfie from a classroom I taught in. This is the room I mean when I say the word “students”: laptops, water bottles, sticky notes, warmth.</figcaption>
+        </figure>
+        <p>And then there is the park. Alex is a friend from the Hut, the bar I go to, and he has a fight on August 11. I train him at six in the morning. That fact carries more of my philosophy than anything else on this page: another person can now feel the quality of how I direct myself. If I arrive under-slept and distracted, his session gets worse. Tenderness turned out to be a discipline — wrapped hands, a plan, showing up before sunrise.</p>
+        <p>The same park is where I go to imagine. That is the redirect this whole year has been: less time proving I am smart, more hours protected for the thing I actually wanted — imagination. And imagination, it turns out, has prerequisites. Rest. Health. Quiet. Mornings that belong to me. Anger could not buy those. Ambition would not. Tenderness did.</p>
+      </div>
+    </article>
+
+    <section class="shelf-why" id="the-shelf">
+      <p class="chapter__number">So why Great Books?</p>
+      <h2>Learning from civilization</h2>
+      <div class="shelf-why__body">
+        <p>Because I wanted to learn from civilization the way Professor Jiang does — as a working inheritance, not a trophy case. The man imbibes knowledge and turns it into teaching, and I have decided that is the kind of teacher I am becoming: not the guy with the frameworks, the guy whose students leave with evidence.</p>
+        <p>So this shelf preserves 25 of his recorded sessions: 13 Great Books lectures, each carrying the exact three questions he wrote for it — 39 questions, untouched — plus 12 seminar sessions walking through Dante. I did not summarize the lectures into content. A summary closes a book. A question keeps it open, and lets you test a three-thousand-year-old argument against the life you woke up in this morning.</p>
+        <p>Anger can reveal a wound or consume a world. Ambition can build a civilization or turn people into material. Tenderness restores what power alone cannot. The Great Books hold all three at human scale — which is why they are on this shelf, and why I am on this page.</p>
+      </div>
+    </section>
+
+    <figure class="dream">
+      <img src="/assets/founder-arc-mirror.webp" width="1440" height="920" alt="An AI-generated image: a cracked mirror leaning on a park bench at dusk, hand wraps draped over its frame, an annotated book open beside it, three empty folding chairs, and a city skyline behind. A faint classical warrior appears in one shard of the mirror.">
+      <figcaption>
+        <span class="image-note">One imagined image</span>
+        <span>Everything else on this page happened. This one is AI-made and labeled: the real objects of this story — the park, the wraps, a worked-over book, the mirror, empty chairs, my city — assembled into the world they built in my head. Imagination is the point of the year. It gets one frame.</span>
+      </figcaption>
+    </figure>
+
+    <section class="letter" id="letter">
+      <header>
+        <p class="chapter__number">A letter</p>
+        <h2>Dear Professor Jiang,</h2>
+      </header>
+      <div class="letter__body">
+        <p><strong>Thank you.</strong> Your December letter reached me at the bottom of the worst year of my life, and it did something no framework had ever done for me: it showed me a man who walked away from a rising life because it stopped being true, fell hard a second time, and let love and responsibility — not optimization — give his talent its final shape. I stopped being so afraid of my own fall somewhere in the middle of reading it.</p>
+        <p>Everything I took from you is in use. Mass, energy, and coordination stopped being vocabulary and started being how I run my weeks. Game theory got me out of my own head and into rooms with actual people in them. And your way of taking in civilization — reading as inheritance, teaching as transmission — is the standard this shelf is reaching for. Your thirteen lectures are here with your thirty-nine questions exactly as you wrote them, because a student should meet your questions, not my summary of them.</p>
+        <p>I know you are coming to America — New York, specifically. Good. This is my city. When you get here, there is a classroom I teach in, a park where I train a friend at six in the morning, and a bar called the Hut where that friendship started. I would be honored to show you what your teaching built an ocean away from where you gave it.</p>
+        <p class="signoff">The shelf is my thank-you. The welcome is real. — Jai</p>
+      </div>
+    </section>
+
+    <section class="close">
+      <header>
+        <p class="chapter__number">And for you</p>
+        <h2>One small thing</h2>
+      </header>
+      <div class="close__body">
+        <p>If any of this feels like your own unfinished year, take the practice — it is the only advice on this page, and I did not invent it, I just kept answering it:</p>
+        <p class="practice">“What is one thing I can do for myself today?”</p>
+        <p>Answer it once, small, today. The shelf will be here when you want company from the last three thousand years.</p>
+      </div>
+    </section>
   </main>
+
+  <footer class="sources">
+    <h3>Sources and receipts</h3>
+    <ul>
+      <li><a href="https://x.com/ChaiWithJai/status/2013316014302285926">“How to Learn AI on the Job (Because There’s No Other Way)”</a> — January 2026</li>
+      <li><a href="https://x.com/ChaiWithJai/status/2019091227761602774">“i asked ai to tell me what’s wrong with me”</a> — February 2026</li>
+      <li><a href="https://x.com/ChaiWithJai/status/2068425637585473763">“Dear Dad”</a> — June 2026</li>
+      <li><a href="https://x.com/ChaiWithJai/status/2068545237769716091">“What is a father?”</a> — June 2026</li>
+      <li><a href="https://predictivehistory.substack.com/p/secret-history-28-onward-and-forward">Xueqin Jiang, “Secret History #28: Onward and Forward”</a> — December 2025, read in full by subscription and quoted in one excerpt above</li>
+    </ul>
+    <p>The lecture transcripts on this site are automatic captions, so this page quotes none of them; the 39 catalog questions are reproduced exactly. One image above is AI-generated and labeled as such. Everything else here is something I published, said, or did.</p>
+  </footer>
 </body>
 </html>

@@ -1195,6 +1195,35 @@
       text-align: right;
     }
 
+    .founder-link {
+      display: inline-flex;
+      justify-self: end;
+      margin-top: 9px;
+      padding: 7px 10px;
+      border: 1px solid color-mix(in srgb, var(--ink-soft) 48%, transparent);
+      border-radius: 999px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      pointer-events: auto;
+      transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+    }
+
+    .founder-link:hover,
+    .founder-link:focus-visible {
+      border-color: var(--ink);
+      background: color-mix(in srgb, var(--ink) 12%, transparent);
+      color: var(--ink);
+    }
+
+    @media (max-width: 560px) {
+      .founder-link { margin-top: 7px; padding: 6px 8px; font-size: 0.5rem; }
+    }
+
     .editorial-identity strong {
       font-family: var(--serif);
       font-size: clamp(1.2rem, 1.8vw, 1.7rem);
@@ -2009,6 +2038,7 @@
       <div class="editorial-index">
         <span class="editorial-index__signal" id="edition-status">Volume 01 of 10</span>
         <span id="palette-label">13 lectures · full transcripts</span>
+        <a class="founder-link" href="/founders-arc/">Why this shelf</a>
       </div>
     </header>
 
